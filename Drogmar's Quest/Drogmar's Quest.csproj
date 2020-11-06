@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{15AE8DA0-50F1-48BA-9825-FD090995F6BA}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Drogmar_s_Quest</RootNamespace>
+    <AssemblyName>Drogmar%27s Quest</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Lines">
+      <HintPath>..\..\..\..\Downloads\Drogmar's Quest\Lines.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BossScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BossScreen.Designer.cs">
+      <DependentUpon>BossScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EasyScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EasyScreen.Designer.cs">
+      <DependentUpon>EasyScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GameOverScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GameOverScreen.Designer.cs">
+      <DependentUpon>GameOverScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HighScoreScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="HighScoreScreen.Designer.cs">
+      <DependentUpon>HighScoreScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Jedi.cs" />
+    <Compile Include="LevelScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LevelScreen.Designer.cs">
+      <DependentUpon>LevelScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MediumScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MediumScreen.Designer.cs">
+      <DependentUpon>MediumScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MenuScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MenuScreen.Designer.cs">
+      <DependentUpon>MenuScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scores.cs" />
+    <Compile Include="Walls.cs" />
+    <EmbeddedResource Include="BossScreen.resx">
+      <DependentUpon>BossScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EasyScreen.resx">
+      <DependentUpon>EasyScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GameOverScreen.resx">
+      <DependentUpon>GameOverScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HighScoreScreen.resx">
+      <DependentUpon>HighScoreScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LevelScreen.resx">
+      <DependentUpon>LevelScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MediumScreen.resx">
+      <DependentUpon>MediumScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MenuScreen.resx">
+      <DependentUpon>MenuScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Background.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\blueSpace.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\redSpace.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\yellowSpace.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Jedi symbol.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\line across black.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\line across white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\straight line black.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\straight line white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\upgrade.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mainPlayer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Player1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Player2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Player3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Player4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Player5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="level1.xml" />
+    <None Include="Resources\underline1.png" />
+    <None Include="Resources\underline.png" />
+    <None Include="Resources\menuSpace.jpg" />
+    <None Include="Resources\361266__japanyoshithegamer__8-bit-soft-beep-impact.wav" />
+    <None Include="Resources\412168__screamstudio__arcade-game-over.wav" />
+    <None Include="Resources\361266__japanyoshithegamer__8-bit-soft-beep-impact1.wav" />
+    <None Include="Resources\159408__noirenex__life-lost-game-over.wav" />
+    <Content Include="ScoreXML.xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
