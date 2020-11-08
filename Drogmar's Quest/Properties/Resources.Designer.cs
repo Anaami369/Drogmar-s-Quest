@@ -81,6 +81,49 @@ namespace Drogmar_s_Quest.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
+        ///&lt;easyLevel1&gt;
+        ///  &lt;walls&gt;
+        ///    &lt;x&gt;130&lt;/x&gt;
+        ///    &lt;y&gt;24&lt;/y&gt;
+        ///    &lt;hp&gt;1&lt;/hp&gt;
+        ///  &lt;/walls&gt;
+        ///  &lt;walls&gt;
+        ///    &lt;x&gt;172&lt;/x&gt;
+        ///    &lt;y&gt;24&lt;/y&gt;
+        ///    &lt;hp&gt;1&lt;/hp&gt;
+        ///  &lt;/walls&gt;
+        ///  &lt;walls&gt;
+        ///    &lt;x&gt;195&lt;/x&gt;
+        ///    &lt;y&gt;24&lt;/y&gt;
+        ///    &lt;hp&gt;1&lt;/hp&gt;
+        ///  &lt;/walls&gt;
+        ///  &lt;walls&gt;
+        ///    &lt;x&gt;219&lt;/x&gt;
+        ///    &lt;y&gt;24&lt;/y&gt;
+        ///    &lt;hp&gt;1&lt;/hp&gt;
+        ///  &lt;/walls&gt;
+        ///  &lt;walls&gt;
+        ///    &lt;x&gt;243&lt;/x&gt;
+        ///    &lt;y&gt;24&lt;/y&gt;
+        ///    &lt;hp&gt;1&lt;/hp&gt;
+        ///  &lt;/walls&gt;
+        ///  &lt;walls&gt;
+        ///    &lt;x&gt;267&lt;/x&gt;
+        ///    &lt;y&gt;24&lt;/y&gt;
+        ///    &lt;hp&gt;1&lt;/hp&gt;
+        ///  &lt;/walls&gt;
+        ///  &lt;walls&gt;
+        ///    &lt;x&gt;290&lt;/x&gt;
+        ///    &lt;y&gt;24&lt; [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string EasyLevel1XML {
+            get {
+                return ResourceManager.GetString("EasyLevel1XML", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
         internal static System.IO.UnmanagedMemoryStream gameOver {
@@ -244,6 +287,27 @@ namespace Drogmar_s_Quest.Properties {
             get {
                 object obj = ResourceManager.GetObject("straight_line_white", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
+        ///&lt;easyLevel1&gt;
+        ///  &lt;walls&gt;
+        ///    &lt;x&gt;130&lt;/x&gt;
+        ///    &lt;y&gt;24&lt;/y&gt;
+        ///    &lt;hp&gt;1&lt;/hp&gt;
+        ///  &lt;/walls&gt;
+        ///  &lt;walls&gt;
+        ///    &lt;x&gt;172&lt;/x&gt;
+        ///    &lt;y&gt;24&lt;/y&gt;
+        ///    &lt;hp&gt;1&lt;/hp&gt;
+        ///  &lt;/walls&gt;
+        ///&lt;/easyLevel1&gt;.
+        /// </summary>
+        internal static string test {
+            get {
+                return ResourceManager.GetString("test", resourceCulture);
             }
         }
         

@@ -29,7 +29,7 @@ namespace Drogmar_s_Quest
 
         public void Move(int speed)
         {
-            x += speed + 7;
+            x += speed;
         }
 
         public void Move(int speed, string direction)
@@ -52,10 +52,6 @@ namespace Drogmar_s_Quest
             {
                 y += speed;
             }
-        }
-        public void LeftMove(int speed)
-        {
-            x -= speed + 4;
         }
     }
 }

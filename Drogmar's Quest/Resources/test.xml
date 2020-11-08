@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<easyLevel1>
+  <walls>
+    <x>440</x>
+    <y>536</y>
+    <hp>2</hp>
+  </walls>
+  <walls>
+    <x>461</x>
+    <y>536</y>
+    <hp>2</hp>
+  </walls>
+</easyLevel1>

@@ -201,6 +201,9 @@
     <None Include="Resources\Player5.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\test.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="Resources\underline1.png" />
     <None Include="Resources\underline.png" />
     <None Include="Resources\menuSpace.jpg" />
@@ -208,7 +211,9 @@
     <None Include="Resources\412168__screamstudio__arcade-game-over.wav" />
     <None Include="Resources\361266__japanyoshithegamer__8-bit-soft-beep-impact1.wav" />
     <None Include="Resources\159408__noirenex__life-lost-game-over.wav" />
-    <Content Include="Resources\EasyLevel1XML.xml" />
+    <Content Include="Resources\EasyLevel1XML.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\ScoreXML.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

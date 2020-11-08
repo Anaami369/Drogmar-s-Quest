@@ -8,11 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Media;
+using System.Xml;
 
 namespace Drogmar_s_Quest
 {
-    //hp = 1 (top)
-    //hp = 2 (bottom)
+    //hp = 1 (up)
+    //hp = 2 (down)
     //hp = 3 (left)
     //hp = 4 (right)
 
@@ -34,7 +35,7 @@ namespace Drogmar_s_Quest
 
         Jedi player;
 
-        int playerSpeed = 20;
+        int playerSpeed = 10;
         int playerSize = 20;
         #endregion
 
@@ -43,8 +44,6 @@ namespace Drogmar_s_Quest
             InitializeComponent();
             OnStart();
         }
-
-
 
         private void menuButton_Click(object sender, EventArgs e)
         {
@@ -167,6 +166,32 @@ namespace Drogmar_s_Quest
             Refresh();
         }
 
+        private void LevelLoad()
+        {
+
+            XmlTextReader reader = new XmlTextReader("Resources/EasyLevel" + level + "XML.xml");
+            //XmlTextReader reader = new XmlTextReader("Resources/test.xml");
+
+            while (reader.Read())
+            {
+
+                if (reader.NodeType == XmlNodeType.Text)
+                {
+                    int x = Convert.ToInt32(reader.ReadString());
+
+                    reader.ReadToNextSibling("y");
+                    int y = Convert.ToInt32(reader.ReadString());
+
+                    reader.ReadToNextSibling("hp");
+                    int hp = Convert.ToInt32(reader.ReadString());
+
+
+                    Walls newWall = new Walls(x, y, hp);
+                    walls.Add(newWall);
+                }
+            }
+        }
+
         public void pauseScreenEnabled()
         {
             if (escKeyDown)
@@ -228,6 +253,8 @@ namespace Drogmar_s_Quest
             resumeButton.Enabled = false;
             resumeButton.Visible = false;
 
+            LevelLoad();
+
             // start the game engine loop
             gameTimer.Enabled = true;
 
@@ -241,6 +268,26 @@ namespace Drogmar_s_Quest
             #region draw hero character
             e.Graphics.DrawImage(Properties.Resources.mainPlayer, player.x, player.y, 10, 10);
             #endregion
+
+            foreach (Walls w in walls)
+            {
+                if (w.hp == 1)
+                {
+                    e.Graphics.DrawImage(Properties.Resources.straight_line_black, w.x, w.y, 54, 2);
+                }
+                else if (w.hp == 2)
+                {
+                    e.Graphics.DrawImage(Properties.Resources.straight_line_black, w.x, w.y, 54, 2);
+                }
+                else if (w.hp == 3)
+                {
+                    e.Graphics.DrawImage(Properties.Resources.line_across_black, w.x, w.y, 2, 54);
+                }
+                else if (w.hp == 4)
+                {
+                    e.Graphics.DrawImage(Properties.Resources.line_across_black, w.x, w.y, 2, 45);
+                }
+            }
         }
     }
 }

@@ -6,8 +6,17 @@ using System.Threading.Tasks;
 
 namespace Drogmar_s_Quest
 {
-    class Walls
+    public class Walls
     {
+        public int x;
+        public int y;
+        public int hp;
 
+        public Walls(int _x, int _y, int _hp)
+        {
+            x = _x;
+            y = _y;
+            hp = _hp;
+        }
     }
 }

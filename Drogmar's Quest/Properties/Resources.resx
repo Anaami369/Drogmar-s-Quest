@@ -124,6 +124,9 @@
   <data name="blueSpace" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\blueSpace.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="EasyLevel1XML" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EasyLevel1XML.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
   <data name="gameOver" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\412168__screamstudio__arcade-game-over.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -174,6 +177,9 @@
   </data>
   <data name="straight_line_white" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\straight line white.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="test" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\test.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="upgrade" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\upgrade.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
