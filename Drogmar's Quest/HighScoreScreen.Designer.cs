@@ -42,9 +42,9 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.label3.ForeColor = System.Drawing.Color.Cyan;
-            this.label3.Location = new System.Drawing.Point(209, 90);
+            this.label3.Location = new System.Drawing.Point(269, 324);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(228, 30);
+            this.label3.Size = new System.Drawing.Size(215, 30);
             this.label3.TabIndex = 13;
             this.label3.Text = "Name";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -54,9 +54,9 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.label2.ForeColor = System.Drawing.Color.Cyan;
-            this.label2.Location = new System.Drawing.Point(426, 90);
+            this.label2.Location = new System.Drawing.Point(485, 324);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(228, 30);
+            this.label2.Size = new System.Drawing.Size(229, 30);
             this.label2.TabIndex = 12;
             this.label2.Text = "Score";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -66,7 +66,7 @@
             this.scoreOutput.BackColor = System.Drawing.Color.Transparent;
             this.scoreOutput.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
             this.scoreOutput.ForeColor = System.Drawing.Color.Cyan;
-            this.scoreOutput.Location = new System.Drawing.Point(420, 120);
+            this.scoreOutput.Location = new System.Drawing.Point(480, 354);
             this.scoreOutput.Name = "scoreOutput";
             this.scoreOutput.Size = new System.Drawing.Size(234, 409);
             this.scoreOutput.TabIndex = 11;
@@ -78,7 +78,7 @@
             this.nameOutput.BackColor = System.Drawing.Color.Transparent;
             this.nameOutput.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
             this.nameOutput.ForeColor = System.Drawing.Color.Cyan;
-            this.nameOutput.Location = new System.Drawing.Point(207, 120);
+            this.nameOutput.Location = new System.Drawing.Point(267, 354);
             this.nameOutput.Name = "nameOutput";
             this.nameOutput.Size = new System.Drawing.Size(217, 409);
             this.nameOutput.TabIndex = 10;
@@ -90,7 +90,7 @@
             this.outputLabel.BackColor = System.Drawing.Color.Transparent;
             this.outputLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F);
             this.outputLabel.ForeColor = System.Drawing.Color.Cyan;
-            this.outputLabel.Location = new System.Drawing.Point(207, 90);
+            this.outputLabel.Location = new System.Drawing.Point(267, 324);
             this.outputLabel.Name = "outputLabel";
             this.outputLabel.Size = new System.Drawing.Size(447, 439);
             this.outputLabel.TabIndex = 9;
@@ -101,11 +101,12 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F);
             this.label1.ForeColor = System.Drawing.Color.Cyan;
-            this.label1.Location = new System.Drawing.Point(284, 38);
+            this.label1.Location = new System.Drawing.Point(272, 270);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(300, 40);
+            this.label1.Size = new System.Drawing.Size(442, 40);
             this.label1.TabIndex = 8;
             this.label1.Text = "HIGH SCORES";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // backButton
             // 
@@ -115,7 +116,7 @@
             this.backButton.ForeColor = System.Drawing.Color.Cyan;
             this.backButton.Location = new System.Drawing.Point(10, 12);
             this.backButton.Name = "backButton";
-            this.backButton.Size = new System.Drawing.Size(67, 35);
+            this.backButton.Size = new System.Drawing.Size(160, 60);
             this.backButton.TabIndex = 7;
             this.backButton.Text = "Back";
             this.backButton.UseVisualStyleBackColor = false;
@@ -136,7 +137,7 @@
             this.Controls.Add(this.backButton);
             this.DoubleBuffered = true;
             this.Name = "HighScoreScreen";
-            this.Size = new System.Drawing.Size(854, 542);
+            this.Size = new System.Drawing.Size(1000, 1000);
             this.ResumeLayout(false);
 
         }

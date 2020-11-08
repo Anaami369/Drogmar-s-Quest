@@ -81,5 +81,11 @@ namespace Drogmar_s_Quest
 
             ms.Focus();
         }
+
+        private void backButton_Enter(object sender, EventArgs e)
+        {
+            backButton.BackColor = Color.Cyan;
+            backButton.ForeColor = Color.Transparent;
+        }
     }
 }

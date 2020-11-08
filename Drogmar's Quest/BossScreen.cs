@@ -232,7 +232,7 @@ namespace Drogmar_s_Quest
         private void BossScreen_Paint(object sender, PaintEventArgs e)
         {
             #region draw hero character
-            e.Graphics.DrawImage(Properties.Resources.mainPlayer, player.x, player.y, 20, 20);
+            e.Graphics.DrawImage(Properties.Resources.mainPlayer, player.x, player.y, 10, 10);
             #endregion
         }
     }

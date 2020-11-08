@@ -11,6 +11,11 @@ using System.Media;
 
 namespace Drogmar_s_Quest
 {
+    //hp = 1 (top)
+    //hp = 2 (bottom)
+    //hp = 3 (left)
+    //hp = 4 (right)
+
     public partial class EasyScreen : UserControl
     {
         #region global values
@@ -230,10 +235,11 @@ namespace Drogmar_s_Quest
 
             player = new Jedi(this.Width / 2 - playerSize / 2, 522, playerSize);
         }
+        
         private void EasyScreen_Paint(object sender, PaintEventArgs e)
         {
             #region draw hero character
-            e.Graphics.DrawImage(Properties.Resources.mainPlayer, player.x, player.y, 20, 20);
+            e.Graphics.DrawImage(Properties.Resources.mainPlayer, player.x, player.y, 10, 10);
             #endregion
         }
     }

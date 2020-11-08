@@ -42,7 +42,7 @@
             this.resumeButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.resumeButton.Font = new System.Drawing.Font("Algerian", 10F);
             this.resumeButton.ForeColor = System.Drawing.Color.Blue;
-            this.resumeButton.Location = new System.Drawing.Point(365, 295);
+            this.resumeButton.Location = new System.Drawing.Point(444, 377);
             this.resumeButton.Name = "resumeButton";
             this.resumeButton.Size = new System.Drawing.Size(130, 38);
             this.resumeButton.TabIndex = 8;
@@ -59,7 +59,7 @@
             this.menuButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.menuButton.Font = new System.Drawing.Font("Algerian", 10F);
             this.menuButton.ForeColor = System.Drawing.Color.Blue;
-            this.menuButton.Location = new System.Drawing.Point(365, 251);
+            this.menuButton.Location = new System.Drawing.Point(444, 333);
             this.menuButton.Name = "menuButton";
             this.menuButton.Size = new System.Drawing.Size(130, 38);
             this.menuButton.TabIndex = 7;
@@ -72,9 +72,9 @@
             this.pauseLabel.BackColor = System.Drawing.Color.DarkGray;
             this.pauseLabel.Font = new System.Drawing.Font("Algerian", 24.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pauseLabel.ForeColor = System.Drawing.Color.Blue;
-            this.pauseLabel.Location = new System.Drawing.Point(303, 210);
+            this.pauseLabel.Location = new System.Drawing.Point(382, 290);
             this.pauseLabel.Name = "pauseLabel";
-            this.pauseLabel.Size = new System.Drawing.Size(249, 38);
+            this.pauseLabel.Size = new System.Drawing.Size(250, 40);
             this.pauseLabel.TabIndex = 6;
             this.pauseLabel.Text = "Game Paused";
             this.pauseLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -106,7 +106,7 @@
             this.Controls.Add(this.pauseLabel);
             this.DoubleBuffered = true;
             this.Name = "BossScreen";
-            this.Size = new System.Drawing.Size(854, 542);
+            this.Size = new System.Drawing.Size(1000, 788);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.BossScreen_Paint);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.BossScreen_KeyUp);
             this.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.BossScreen_PreviewKeyDown);

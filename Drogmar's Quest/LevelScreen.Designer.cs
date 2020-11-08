@@ -47,7 +47,7 @@
             this.easyButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.easyButton.Font = new System.Drawing.Font("Times New Roman", 20F, System.Drawing.FontStyle.Bold);
             this.easyButton.ForeColor = System.Drawing.Color.Black;
-            this.easyButton.Location = new System.Drawing.Point(81, 170);
+            this.easyButton.Location = new System.Drawing.Point(167, 332);
             this.easyButton.Name = "easyButton";
             this.easyButton.Size = new System.Drawing.Size(194, 77);
             this.easyButton.TabIndex = 6;
@@ -66,7 +66,7 @@
             this.normalButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.normalButton.Font = new System.Drawing.Font("Times New Roman", 20F, System.Drawing.FontStyle.Bold);
             this.normalButton.ForeColor = System.Drawing.Color.Black;
-            this.normalButton.Location = new System.Drawing.Point(331, 170);
+            this.normalButton.Location = new System.Drawing.Point(411, 332);
             this.normalButton.Name = "normalButton";
             this.normalButton.Size = new System.Drawing.Size(194, 77);
             this.normalButton.TabIndex = 7;
@@ -85,7 +85,7 @@
             this.bossButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.bossButton.Font = new System.Drawing.Font("Times New Roman", 20F, System.Drawing.FontStyle.Bold);
             this.bossButton.ForeColor = System.Drawing.Color.White;
-            this.bossButton.Location = new System.Drawing.Point(574, 170);
+            this.bossButton.Location = new System.Drawing.Point(651, 332);
             this.bossButton.Name = "bossButton";
             this.bossButton.Size = new System.Drawing.Size(194, 77);
             this.bossButton.TabIndex = 8;
@@ -104,7 +104,7 @@
             this.normalUnderline.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.normalUnderline.Font = new System.Drawing.Font("Times New Roman", 20F, System.Drawing.FontStyle.Bold);
             this.normalUnderline.ForeColor = System.Drawing.Color.Black;
-            this.normalUnderline.Location = new System.Drawing.Point(331, 253);
+            this.normalUnderline.Location = new System.Drawing.Point(411, 415);
             this.normalUnderline.Name = "normalUnderline";
             this.normalUnderline.Size = new System.Drawing.Size(194, 29);
             this.normalUnderline.TabIndex = 10;
@@ -120,7 +120,7 @@
             this.bossUnderline.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.bossUnderline.Font = new System.Drawing.Font("Times New Roman", 20F, System.Drawing.FontStyle.Bold);
             this.bossUnderline.ForeColor = System.Drawing.Color.Black;
-            this.bossUnderline.Location = new System.Drawing.Point(574, 253);
+            this.bossUnderline.Location = new System.Drawing.Point(651, 415);
             this.bossUnderline.Name = "bossUnderline";
             this.bossUnderline.Size = new System.Drawing.Size(194, 29);
             this.bossUnderline.TabIndex = 11;
@@ -136,7 +136,7 @@
             this.easyUnderline.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.easyUnderline.Font = new System.Drawing.Font("Times New Roman", 20F, System.Drawing.FontStyle.Bold);
             this.easyUnderline.ForeColor = System.Drawing.Color.Black;
-            this.easyUnderline.Location = new System.Drawing.Point(81, 253);
+            this.easyUnderline.Location = new System.Drawing.Point(167, 415);
             this.easyUnderline.Name = "easyUnderline";
             this.easyUnderline.Size = new System.Drawing.Size(194, 29);
             this.easyUnderline.TabIndex = 13;
@@ -150,10 +150,12 @@
             this.backButton.ForeColor = System.Drawing.Color.Cyan;
             this.backButton.Location = new System.Drawing.Point(3, 3);
             this.backButton.Name = "backButton";
-            this.backButton.Size = new System.Drawing.Size(67, 35);
+            this.backButton.Size = new System.Drawing.Size(160, 60);
             this.backButton.TabIndex = 14;
             this.backButton.Text = "Back";
             this.backButton.UseVisualStyleBackColor = false;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
+            this.backButton.Enter += new System.EventHandler(this.backButton_Enter);
             // 
             // LevelScreen
             // 
@@ -170,7 +172,7 @@
             this.Controls.Add(this.easyButton);
             this.DoubleBuffered = true;
             this.Name = "LevelScreen";
-            this.Size = new System.Drawing.Size(854, 542);
+            this.Size = new System.Drawing.Size(1000, 788);
             this.ResumeLayout(false);
 
         }

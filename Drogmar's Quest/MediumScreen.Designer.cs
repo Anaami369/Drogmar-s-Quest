@@ -41,41 +41,44 @@
             this.resumeButton.BackColor = System.Drawing.Color.DarkGray;
             this.resumeButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.resumeButton.Font = new System.Drawing.Font("Algerian", 10F);
-            this.resumeButton.ForeColor = System.Drawing.Color.Black;
-            this.resumeButton.Location = new System.Drawing.Point(372, 295);
+            this.resumeButton.ForeColor = System.Drawing.Color.Blue;
+            this.resumeButton.Location = new System.Drawing.Point(444, 438);
             this.resumeButton.Name = "resumeButton";
             this.resumeButton.Size = new System.Drawing.Size(128, 38);
             this.resumeButton.TabIndex = 8;
             this.resumeButton.Text = "resume game";
             this.resumeButton.UseVisualStyleBackColor = false;
+            this.resumeButton.Click += new System.EventHandler(this.resumeButton_Click);
             // 
             // menuButton
             // 
             this.menuButton.BackColor = System.Drawing.Color.DarkGray;
             this.menuButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.menuButton.Font = new System.Drawing.Font("Algerian", 10F);
-            this.menuButton.ForeColor = System.Drawing.Color.Black;
-            this.menuButton.Location = new System.Drawing.Point(372, 251);
+            this.menuButton.ForeColor = System.Drawing.Color.Blue;
+            this.menuButton.Location = new System.Drawing.Point(444, 394);
             this.menuButton.Name = "menuButton";
             this.menuButton.Size = new System.Drawing.Size(128, 38);
             this.menuButton.TabIndex = 7;
             this.menuButton.Text = "return to menu";
             this.menuButton.UseVisualStyleBackColor = false;
+            this.menuButton.Click += new System.EventHandler(this.menuButton_Click);
             // 
             // pauseLabel
             // 
             this.pauseLabel.BackColor = System.Drawing.Color.DarkGray;
             this.pauseLabel.Font = new System.Drawing.Font("Algerian", 24.75F);
-            this.pauseLabel.ForeColor = System.Drawing.Color.Firebrick;
-            this.pauseLabel.Location = new System.Drawing.Point(303, 210);
+            this.pauseLabel.ForeColor = System.Drawing.Color.Blue;
+            this.pauseLabel.Location = new System.Drawing.Point(379, 351);
             this.pauseLabel.Name = "pauseLabel";
-            this.pauseLabel.Size = new System.Drawing.Size(249, 38);
+            this.pauseLabel.Size = new System.Drawing.Size(250, 40);
             this.pauseLabel.TabIndex = 6;
             this.pauseLabel.Text = "Game Paused";
             this.pauseLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // gameTimer
             // 
+            this.gameTimer.Enabled = true;
             this.gameTimer.Tick += new System.EventHandler(this.gameTimer_Tick);
             // 
             // scoreKeeper
@@ -100,7 +103,7 @@
             this.Controls.Add(this.pauseLabel);
             this.DoubleBuffered = true;
             this.Name = "MediumScreen";
-            this.Size = new System.Drawing.Size(854, 542);
+            this.Size = new System.Drawing.Size(1000, 788);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.MediumScreen_Paint);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.MediumScreen_KeyUp);
             this.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.MediumScreen_PreviewKeyDown);

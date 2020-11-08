@@ -278,7 +278,6 @@ namespace Drogmar_s_Quest
             }
         }
 
-
         private void exitButton_Enter(object sender, EventArgs e)
         {
             playAgainButton.BackColor = Color.LightGray;
