@@ -273,19 +273,19 @@ namespace Drogmar_s_Quest
             {
                 if (w.hp == 1)
                 {
-                    e.Graphics.DrawImage(Properties.Resources.straight_line_black, w.x, w.y, 54, 2);
+                    e.Graphics.DrawImage(Properties.Resources.long_white_line1, w.x, w.y, 27, 2);
                 }
                 else if (w.hp == 2)
                 {
-                    e.Graphics.DrawImage(Properties.Resources.straight_line_black, w.x, w.y, 54, 2);
+                    e.Graphics.DrawImage(Properties.Resources.long_white_line1, w.x, w.y, 27, 2);
                 }
                 else if (w.hp == 3)
                 {
-                    e.Graphics.DrawImage(Properties.Resources.line_across_black, w.x, w.y, 2, 54);
+                    e.Graphics.DrawImage(Properties.Resources.tall_white_line1, w.x, w.y, 2, 27);
                 }
                 else if (w.hp == 4)
                 {
-                    e.Graphics.DrawImage(Properties.Resources.line_across_black, w.x, w.y, 2, 45);
+                    e.Graphics.DrawImage(Properties.Resources.tall_white_line1, w.x, w.y, 2, 27);
                 }
             }
         }

@@ -201,6 +201,11 @@
     <None Include="Resources\Player5.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\long black line.png" />
+    <None Include="Resources\long black line1.png" />
+    <None Include="Resources\tall black line 1.png" />
+    <None Include="Resources\long white line 1.png" />
+    <None Include="Resources\tall white line 1.png" />
     <Content Include="Resources\test.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

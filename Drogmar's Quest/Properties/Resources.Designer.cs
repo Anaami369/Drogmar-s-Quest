@@ -173,9 +173,9 @@ namespace Drogmar_s_Quest.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap line_across_black {
+        internal static System.Drawing.Bitmap long_black_line1 {
             get {
-                object obj = ResourceManager.GetObject("line_across_black", resourceCulture);
+                object obj = ResourceManager.GetObject("long_black_line1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -183,9 +183,9 @@ namespace Drogmar_s_Quest.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap line_across_white {
+        internal static System.Drawing.Bitmap long_white_line1 {
             get {
-                object obj = ResourceManager.GetObject("line_across_white", resourceCulture);
+                object obj = ResourceManager.GetObject("long_white_line1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -273,9 +273,9 @@ namespace Drogmar_s_Quest.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap straight_line_black {
+        internal static System.Drawing.Bitmap tall_black_line1 {
             get {
-                object obj = ResourceManager.GetObject("straight_line_black", resourceCulture);
+                object obj = ResourceManager.GetObject("tall_black_line1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -283,9 +283,9 @@ namespace Drogmar_s_Quest.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap straight_line_white {
+        internal static System.Drawing.Bitmap tall_white_line1 {
             get {
-                object obj = ResourceManager.GetObject("straight_line_white", resourceCulture);
+                object obj = ResourceManager.GetObject("tall_white_line1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -294,14 +294,14 @@ namespace Drogmar_s_Quest.Properties {
         ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
         ///&lt;easyLevel1&gt;
         ///  &lt;walls&gt;
-        ///    &lt;x&gt;130&lt;/x&gt;
-        ///    &lt;y&gt;24&lt;/y&gt;
-        ///    &lt;hp&gt;1&lt;/hp&gt;
+        ///    &lt;x&gt;440&lt;/x&gt;
+        ///    &lt;y&gt;536&lt;/y&gt;
+        ///    &lt;hp&gt;2&lt;/hp&gt;
         ///  &lt;/walls&gt;
         ///  &lt;walls&gt;
-        ///    &lt;x&gt;172&lt;/x&gt;
-        ///    &lt;y&gt;24&lt;/y&gt;
-        ///    &lt;hp&gt;1&lt;/hp&gt;
+        ///    &lt;x&gt;455&lt;/x&gt;
+        ///    &lt;y&gt;536&lt;/y&gt;
+        ///    &lt;hp&gt;2&lt;/hp&gt;
         ///  &lt;/walls&gt;
         ///&lt;/easyLevel1&gt;.
         /// </summary>
