@@ -4,54 +4,69 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Media;
 
 namespace Drogmar_s_Quest
 {
     class Jedi
     {
+        public int x, y, size, xSpeed, ySpeed;
         public Color color;
-        public int x, y, size;
 
-        public Jedi(int _x, int _y, int _size)
+        SoundPlayer wallBounce = new SoundPlayer(Properties.Resources.lifeLost);
+
+        public Jedi(int _x, int _y, int _size, int _xSpeed, int _ySpeed)
         {
             x = _x;
             y = _y;
             size = _size;
+            xSpeed = _xSpeed;
+            ySpeed = _ySpeed;
         }
 
-        public Jedi(int _x, int _y, int _size, Color _color)
+        public Jedi(int _x, int _y, int _size, int _xSpeed, int _ySpeed, Color _color)
         {
             x = _x;
             y = _y;
             size = _size;
+            xSpeed = _xSpeed;
+            ySpeed = _ySpeed;
             color = _color;
         }
 
-        public void Move(int speed)
+        public void MoveRight(int speed)
         {
             x += speed;
         }
 
-        public void Move(int speed, string direction)
+        public void MoveLeft(int speed)
         {
-            //true represents right
-            if (direction == "right")
+            x -= speed;
+        }
+
+        public void MoveUp(int speed)
+        {
+            y -= speed;
+        }
+
+        public void MoveDown(int speed)
+        {
+            y += speed;
+        }
+
+        public bool WallCollision(Walls w)
+        {
+            Rectangle LWallRec = new Rectangle(w.x, w.y, 27, 2);
+            Rectangle TWallRec = new Rectangle(w.x, w.y, 2, 27);
+            Rectangle jedi1Rec = new Rectangle(x, y, size, size);
+
+            if (LWallRec.IntersectsWith(jedi1Rec))
             {
-                x += speed;
-            }
-            else if (direction == "left")
-            {
-                x -= speed;
+
+                wallBounce.Play();
             }
 
-            else if (direction == "up")
-            {
-                y -= speed;
-            }
-            else if (direction == "down")
-            {
-                y += speed;
-            }
+            return LWallRec.IntersectsWith(jedi1Rec) || TWallRec.IntersectsWith(jedi1Rec);
         }
     }
 }

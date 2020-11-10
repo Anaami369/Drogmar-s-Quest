@@ -20,7 +20,7 @@ namespace Drogmar_s_Quest
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            TsunamiReadXML();
+            ReadXML();
 
             // Start the program centred on the Menu Screen
             MenuScreen ms = new MenuScreen();
@@ -51,7 +51,7 @@ namespace Drogmar_s_Quest
 
         //    writer.Close();
         }
-        private void TsunamiReadXML()
+        private void ReadXML()
         {
             ////reading xml
 

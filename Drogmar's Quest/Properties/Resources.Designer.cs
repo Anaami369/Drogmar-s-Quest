@@ -85,37 +85,38 @@ namespace Drogmar_s_Quest.Properties {
         ///&lt;easyLevel1&gt;
         ///  &lt;walls&gt;
         ///    &lt;x&gt;130&lt;/x&gt;
-        ///    &lt;y&gt;24&lt;/y&gt;
+        ///    &lt;y&gt;8&lt;/y&gt;
         ///    &lt;hp&gt;1&lt;/hp&gt;
         ///  &lt;/walls&gt;
         ///  &lt;walls&gt;
         ///    &lt;x&gt;172&lt;/x&gt;
-        ///    &lt;y&gt;24&lt;/y&gt;
+        ///    &lt;y&gt;8&lt;/y&gt;
         ///    &lt;hp&gt;1&lt;/hp&gt;
         ///  &lt;/walls&gt;
         ///  &lt;walls&gt;
         ///    &lt;x&gt;195&lt;/x&gt;
-        ///    &lt;y&gt;24&lt;/y&gt;
+        ///    &lt;y&gt;8&lt;/y&gt;
         ///    &lt;hp&gt;1&lt;/hp&gt;
         ///  &lt;/walls&gt;
         ///  &lt;walls&gt;
         ///    &lt;x&gt;219&lt;/x&gt;
-        ///    &lt;y&gt;24&lt;/y&gt;
+        ///    &lt;y&gt;8&lt;/y&gt;
         ///    &lt;hp&gt;1&lt;/hp&gt;
         ///  &lt;/walls&gt;
         ///  &lt;walls&gt;
         ///    &lt;x&gt;243&lt;/x&gt;
-        ///    &lt;y&gt;24&lt;/y&gt;
+        ///    &lt;y&gt;8&lt;/y&gt;
         ///    &lt;hp&gt;1&lt;/hp&gt;
         ///  &lt;/walls&gt;
         ///  &lt;walls&gt;
         ///    &lt;x&gt;267&lt;/x&gt;
-        ///    &lt;y&gt;24&lt;/y&gt;
+        ///    &lt;y&gt;8&lt;/y&gt;
         ///    &lt;hp&gt;1&lt;/hp&gt;
         ///  &lt;/walls&gt;
         ///  &lt;walls&gt;
         ///    &lt;x&gt;290&lt;/x&gt;
-        ///    &lt;y&gt;24&lt; [rest of string was truncated]&quot;;.
+        ///    &lt;y&gt;8&lt;/y&gt;
+        ///   [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string EasyLevel1XML {
             get {
@@ -138,6 +139,26 @@ namespace Drogmar_s_Quest.Properties {
         internal static System.Drawing.Bitmap Jedi_symbol {
             get {
                 object obj = ResourceManager.GetObject("Jedi_symbol", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap jedi1 {
+            get {
+                object obj = ResourceManager.GetObject("jedi1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap jedi2 {
+            get {
+                object obj = ResourceManager.GetObject("jedi2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -294,13 +315,18 @@ namespace Drogmar_s_Quest.Properties {
         ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
         ///&lt;easyLevel1&gt;
         ///  &lt;walls&gt;
-        ///    &lt;x&gt;440&lt;/x&gt;
-        ///    &lt;y&gt;536&lt;/y&gt;
+        ///    &lt;x&gt;267&lt;/x&gt;
+        ///    &lt;y&gt;722&lt;/y&gt;
         ///    &lt;hp&gt;2&lt;/hp&gt;
         ///  &lt;/walls&gt;
         ///  &lt;walls&gt;
-        ///    &lt;x&gt;455&lt;/x&gt;
-        ///    &lt;y&gt;536&lt;/y&gt;
+        ///    &lt;x&gt;130&lt;/x&gt;
+        ///    &lt;y&gt;8&lt;/y&gt;
+        ///    &lt;hp&gt;1&lt;/hp&gt;
+        ///  &lt;/walls&gt;
+        ///  &lt;walls&gt;
+        ///    &lt;x&gt;130&lt;/x&gt;
+        ///    &lt;y&gt;746&lt;/y&gt;
         ///    &lt;hp&gt;2&lt;/hp&gt;
         ///  &lt;/walls&gt;
         ///&lt;/easyLevel1&gt;.

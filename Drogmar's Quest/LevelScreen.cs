@@ -20,10 +20,12 @@ namespace Drogmar_s_Quest
         private void easyButton_Click(object sender, EventArgs e)
         {
             EasyScreen es = new EasyScreen();
-            Form form = this.FindForm();
+            Form f = this.FindForm();
 
-            form.Controls.Remove(this);
-            form.Controls.Add(es);
+            f.Controls.Remove(this);
+            f.Controls.Add(es);
+
+            es.Location = new Point((f.Width - es.Width) / 2, (f.Height - es.Height) / 2);
 
             es.Focus();
         }
@@ -31,10 +33,12 @@ namespace Drogmar_s_Quest
         private void normalButton_Click(object sender, EventArgs e)
         {
             MediumScreen ms = new MediumScreen();
-            Form form = this.FindForm();
+            Form f = this.FindForm();
 
-            form.Controls.Remove(this);
-            form.Controls.Add(ms);
+            f.Controls.Remove(this);
+            f.Controls.Add(ms);
+
+            ms.Location = new Point((f.Width - ms.Width) / 2, (f.Height - ms.Height) / 2);
 
             ms.Focus();
         }

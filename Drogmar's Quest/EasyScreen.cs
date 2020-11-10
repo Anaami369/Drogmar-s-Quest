@@ -16,12 +16,13 @@ namespace Drogmar_s_Quest
     //hp = 2 (down)
     //hp = 3 (left)
     //hp = 4 (right)
+    //difference = 76
 
     public partial class EasyScreen : UserControl
     {
         #region global values
 
-        Boolean leftArrowDown, rightArrowDown, upArrowDown, downArrowDown, escKeyDown, spaceDown, gamePaused;
+        public static Boolean leftArrowDown, rightArrowDown, upArrowDown, downArrowDown, escKeyDown, spaceDown, gamePaused;
 
         // Game values
         int lives = 3;
@@ -31,12 +32,22 @@ namespace Drogmar_s_Quest
 
         // lists
         List<Walls> walls = new List<Walls>();
+        List<Jedi> jedi = new List<Jedi>(0);
         public static List<string> scores = new List<string>();
 
-        Jedi player;
+        Players player;
+
+        Walls wall;
 
         int playerSpeed = 10;
         int playerSize = 20;
+
+        int jediSpeed = 7;
+        int jediSize = 20;
+
+        Image yoda = Properties.Resources.mainPlayer;
+        Image robo1 = Properties.Resources.jedi1;
+        Image robo2 = Properties.Resources.jedi2;
         #endregion
 
         public EasyScreen()
@@ -72,31 +83,30 @@ namespace Drogmar_s_Quest
 
         private void EasyScreen_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
+                //player 1 button presses
+                switch (e.KeyCode)
+                {
+                    case Keys.Up:
+                        upArrowDown = true;
+                        break;
+                    case Keys.Down:
+                        downArrowDown = true;
+                        break;
+                    case Keys.Left:
+                        leftArrowDown = true;
+                        break;
+                    case Keys.Right:
+                        rightArrowDown = true;
+                        break;
+                    case Keys.Escape:
+                        escKeyDown = true;
+                        break;
+                    case Keys.Space:
+                        spaceDown = true;
+                        break;
 
-            //player 1 button presses
-            switch (e.KeyCode)
-            {
-                case Keys.Up:
-                    upArrowDown = true;
-                    break;
-                case Keys.Down:
-                    downArrowDown = true;
-                    break;
-                case Keys.Left:
-                    leftArrowDown = true;
-                    break;
-                case Keys.Right:
-                    rightArrowDown = true;
-                    break;
-                case Keys.Escape:
-                    escKeyDown = true;
-                    break;
-                case Keys.Space:
-                    spaceDown = true;
-                    break;
-
-                default:
-                    break;
+                    default:
+                        break;
             }
         }
 
@@ -160,6 +170,71 @@ namespace Drogmar_s_Quest
 
                 player.Move(playerSpeed, "down");
             }
+            #endregion
+
+            #region collision of player with walls
+
+            //not working
+            foreach (Walls w in walls)
+            {
+                Rectangle LWallsRec = new Rectangle(w.x, w.y, 27, 2);
+                Rectangle TWallsRec = new Rectangle(w.x, w.y, 2, 27); 
+                Rectangle playerRec = new Rectangle(player.x, player.y, player.size, player.size);
+
+                if (LWallsRec.IntersectsWith(playerRec))
+                {
+                    upArrowDown = false;
+                }
+                if (LWallsRec.IntersectsWith(playerRec))
+                {
+                    downArrowDown = false;
+                }
+                if (TWallsRec.IntersectsWith(playerRec))
+                {
+                    leftArrowDown = false;
+                }
+                if (TWallsRec.IntersectsWith(playerRec))
+                {
+                    rightArrowDown = false;
+                }
+            }
+            #endregion
+
+            #region collision of jedi with walls
+
+            foreach(Walls w in walls)
+            {
+                Rectangle LWallsRec = new Rectangle(w.x, w.y, 27, 2);
+                Rectangle TWallsRec = new Rectangle(w.x, w.y, 2, 27);
+                Rectangle robo1Rec = new Rectangle(jedi1.x, jedi1.y, jedi1.size, jedi1.size);
+
+                if (robo1Rec.IntersectsWith(LWallsRec))
+                {
+                    if (jedi1.y >= w.y - jedi1.size && jedi1.y <= w.y + 2)
+                    {
+                        jedi1.ySpeed = jedi1.ySpeed * -1;
+                    }
+                    else if (wall.x <= w.x + 27 && wall.x >= w.x)
+                    {
+                        jedi1.xSpeed = jedi1.xSpeed * -1;
+                    }
+                }
+                if (robo1Rec.IntersectsWith(TWallsRec))
+                {
+                    if (wall.x <= w.x + 27 && wall.x >= w.x)
+                    {
+                        jedi1.xSpeed = jedi1.xSpeed * -1;
+                    }
+                    else if (jedi1.y >= w.y - jedi1.size && jedi1.y <= w.y + 2)
+                    {
+                        jedi1.ySpeed = jedi1.ySpeed * -1;
+                    }
+                }
+
+                SoundPlayer brickPlayer = new SoundPlayer(Properties.Resources.lifeLost);
+                brickPlayer.Play();
+            }
+
             #endregion
 
             pauseScreenEnabled();
@@ -260,15 +335,23 @@ namespace Drogmar_s_Quest
 
             scoreKeeper.Text = "Lives: " + score;
 
-            player = new Jedi(this.Width / 2 - playerSize / 2, 522, playerSize);
+            player = new Jedi(this.Width / 2 - playerSize / 2, 352, playerSize);
+            jedi1 = new Jedi(this.Width / 2 - jediSize / 2, 352, jediSize);
+            jedi2 = new Jedi(this.Width / 2 - jediSize / 2, 352, jediSize);
         }
-        
+
         private void EasyScreen_Paint(object sender, PaintEventArgs e)
         {
             #region draw hero character
-            e.Graphics.DrawImage(Properties.Resources.mainPlayer, player.x, player.y, 10, 10);
+            e.Graphics.DrawImage(yoda, player.x, player.y, 20, 20);
             #endregion
 
+            #region draw jedi characters
+            e.Graphics.DrawImage(robo1, jedi1.x, jedi1.y, 20, 20);
+            e.Graphics.DrawImage(robo2, jedi2.x, jedi2.y, 20, 20);
+            #endregion
+
+            #region draw walls
             foreach (Walls w in walls)
             {
                 if (w.hp == 1)
@@ -287,6 +370,7 @@ namespace Drogmar_s_Quest
                 {
                     e.Graphics.DrawImage(Properties.Resources.tall_white_line1, w.x, w.y, 2, 27);
                 }
+                #endregion
             }
         }
     }

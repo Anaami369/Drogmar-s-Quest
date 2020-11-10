@@ -137,7 +137,7 @@
             this.Controls.Add(this.backButton);
             this.DoubleBuffered = true;
             this.Name = "HighScoreScreen";
-            this.Size = new System.Drawing.Size(1000, 1000);
+            this.Size = new System.Drawing.Size(1000, 788);
             this.ResumeLayout(false);
 
         }

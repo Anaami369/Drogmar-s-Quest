@@ -100,6 +100,7 @@
     <Compile Include="MenuScreen.Designer.cs">
       <DependentUpon>MenuScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="Players.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scores.cs" />
@@ -206,6 +207,8 @@
     <None Include="Resources\tall black line 1.png" />
     <None Include="Resources\long white line 1.png" />
     <None Include="Resources\tall white line 1.png" />
+    <None Include="Resources\jedi1.png" />
+    <None Include="Resources\jedi2.png" />
     <Content Include="Resources\test.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

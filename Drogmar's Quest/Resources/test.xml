@@ -1,13 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <easyLevel1>
   <walls>
-    <x>440</x>
-    <y>536</y>
+    <x>267</x>
+    <y>722</y>
     <hp>2</hp>
   </walls>
   <walls>
-    <x>455</x>
-    <y>536</y>
+    <x>130</x>
+    <y>8</y>
+    <hp>1</hp>
+  </walls>
+  <walls>
+    <x>130</x>
+    <y>746</y>
     <hp>2</hp>
   </walls>
 </easyLevel1>

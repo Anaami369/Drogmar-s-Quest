@@ -130,6 +130,12 @@
   <data name="gameOver" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\412168__screamstudio__arcade-game-over.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="jedi1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\jedi1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="jedi2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\jedi2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Jedi_symbol" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Jedi symbol.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
