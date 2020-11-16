@@ -36,6 +36,8 @@ namespace Drogmar_s_Quest
         public static List<string> scores = new List<string>();
 
         Players player;
+        Jedi jedi1;
+        Jedi jedi2;
 
         Walls wall;
 
@@ -202,7 +204,7 @@ namespace Drogmar_s_Quest
 
             #region collision of jedi with walls
 
-            foreach(Walls w in walls)
+            foreach (Walls w in walls)
             {
                 Rectangle LWallsRec = new Rectangle(w.x, w.y, 27, 2);
                 Rectangle TWallsRec = new Rectangle(w.x, w.y, 2, 27);
@@ -335,9 +337,9 @@ namespace Drogmar_s_Quest
 
             scoreKeeper.Text = "Lives: " + score;
 
-            player = new Jedi(this.Width / 2 - playerSize / 2, 352, playerSize);
-            jedi1 = new Jedi(this.Width / 2 - jediSize / 2, 352, jediSize);
-            jedi2 = new Jedi(this.Width / 2 - jediSize / 2, 352, jediSize);
+            player = new Players(this.Width / 2 - playerSize / 2, 352, playerSize);
+            jedi1 = new Jedi(this.Width / 2 - jediSize / 2, 372, jediSize);
+            jedi2 = new Jedi(this.Width / 2 - jediSize / 2, 392, jediSize);
         }
 
         private void EasyScreen_Paint(object sender, PaintEventArgs e)
@@ -347,8 +349,8 @@ namespace Drogmar_s_Quest
             #endregion
 
             #region draw jedi characters
-            e.Graphics.DrawImage(robo1, jedi1.x, jedi1.y, 20, 20);
-            e.Graphics.DrawImage(robo2, jedi2.x, jedi2.y, 20, 20);
+            e.Graphics.DrawImage(robo1, jedi1.x, jedi1.y, 30, 30);
+            e.Graphics.DrawImage(robo2, jedi2.x, jedi2.y, 30, 30);
             #endregion
 
             #region draw walls

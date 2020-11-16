@@ -27,7 +27,7 @@ namespace Drogmar_s_Quest
         List<Walls> walls = new List<Walls>();
         public static List<string> scores = new List<string>();
 
-        Jedi player;
+        Players player;
 
         int playerSpeed = 20;
         int playerSize = 20;
@@ -176,7 +176,7 @@ namespace Drogmar_s_Quest
 
             scoreKeeper.Text = "Lives: " + score;
 
-            player = new Jedi(this.Width / 2 - playerSize / 2, 522, playerSize);
+            player = new Players(this.Width / 2 - playerSize / 2, 522, playerSize);
         }
 
         public void pauseScreenEnabled()

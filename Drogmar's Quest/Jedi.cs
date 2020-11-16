@@ -10,7 +10,7 @@ namespace Drogmar_s_Quest
 {
     class Jedi
     {
-        public int x, y, size, xSpeed, ySpeed;
+        public int x, y, size, xSpeed, ySpeed, jediSize;
         public Color color;
 
         SoundPlayer wallBounce = new SoundPlayer(Properties.Resources.lifeLost);
@@ -34,22 +34,29 @@ namespace Drogmar_s_Quest
             color = _color;
         }
 
-        public void MoveRight(int speed)
+        public Jedi(int _x, int _y, int _jediSize)
+        {
+            x = _x;
+            y = _y;
+            jediSize = _jediSize;
+        }
+
+        public void MoveRight(int speed, int _x)
         {
             x += speed;
         }
 
-        public void MoveLeft(int speed)
+        public void MoveLeft(int speed, int _x)
         {
             x -= speed;
         }
 
-        public void MoveUp(int speed)
+        public void MoveUp(int speed, int _y)
         {
             y -= speed;
         }
 
-        public void MoveDown(int speed)
+        public void MoveDown(int speed, int _y)
         {
             y += speed;
         }

@@ -10,18 +10,26 @@ namespace Drogmar_s_Quest
 {
     class Players
     {
-        public int x, y, size, xSpeed, ySpeed;
+        public int x, y, size, xSpeed, ySpeed, playerSize;
         public Color color;
 
         SoundPlayer wallBounce = new SoundPlayer(Properties.Resources.lifeLost);
 
-        public Players(int _x, int _y, int _size, int _xSpeed, int _ySpeed)
+        public Players(int _x, int _y, int _playerSize)
+        {
+            x = _x;
+            y = _y; 
+            playerSize = _playerSize;
+        }
+
+        public Players(int _x, int _y, int _size, int _xSpeed, int _ySpeed, int _playerSize)
         {
             x = _x;
             y = _y;
             size = _size;
             xSpeed = _xSpeed;
             ySpeed = _ySpeed;
+            playerSize = _playerSize;
         }
 
         public Players(int _x, int _y, int _size, int _xSpeed, int _ySpeed, Color _color)
@@ -32,11 +40,6 @@ namespace Drogmar_s_Quest
             xSpeed = _xSpeed;
             ySpeed = _ySpeed;
             color = _color;
-        }
-
-        public void Move(int speed)
-        {
-            x += speed;
         }
 
         public void Move(int speed, string direction)
