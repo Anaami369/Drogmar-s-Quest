@@ -8,14 +8,18 @@ namespace Drogmar_s_Quest
 {
     public class Walls
     {
-        public int x;
-        public int y;
+        public int startX;
+        public int startY;
+        public int endX;
+        public int endY;
         public int hp;
 
-        public Walls(int _x, int _y, int _hp)
+        public Walls(int _startX, int _startY, int _endX, int _endY,int _hp)
         {
-            x = _x;
-            y = _y;
+            startX = _startX;
+            startY = _startY;
+            endX = _endX;
+            endY = _endY;
             hp = _hp;
         }
     }

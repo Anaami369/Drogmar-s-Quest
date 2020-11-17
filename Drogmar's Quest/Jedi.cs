@@ -15,15 +15,6 @@ namespace Drogmar_s_Quest
 
         SoundPlayer wallBounce = new SoundPlayer(Properties.Resources.lifeLost);
 
-        public Jedi(int _x, int _y, int _size, int _xSpeed, int _ySpeed)
-        {
-            x = _x;
-            y = _y;
-            size = _size;
-            xSpeed = _xSpeed;
-            ySpeed = _ySpeed;
-        }
-
         public Jedi(int _x, int _y, int _size, int _xSpeed, int _ySpeed, Color _color)
         {
             x = _x;
@@ -41,39 +32,43 @@ namespace Drogmar_s_Quest
             jediSize = _jediSize;
         }
 
-        public void MoveRight(int speed, int _x)
+        public void Move(int speed, string direction)
         {
-            x += speed;
-        }
+            //true represents right
+            if (direction == "right")
+            {
+                x += speed;
+            }
+            else if (direction == "left")
+            {
+                x -= speed;
+            }
 
-        public void MoveLeft(int speed, int _x)
-        {
-            x -= speed;
-        }
-
-        public void MoveUp(int speed, int _y)
-        {
-            y -= speed;
-        }
-
-        public void MoveDown(int speed, int _y)
-        {
-            y += speed;
+            else if (direction == "up")
+            {
+                y -= speed;
+            }
+            else if (direction == "down")
+            {
+                y += speed;
+            }
         }
 
         public bool WallCollision(Walls w)
         {
-            Rectangle LWallRec = new Rectangle(w.x, w.y, 27, 2);
-            Rectangle TWallRec = new Rectangle(w.x, w.y, 2, 27);
-            Rectangle jedi1Rec = new Rectangle(x, y, size, size);
+            Rectangle wallsRec = new Rectangle(w.startX, w.startY, w.endX, w.endY);
+            Rectangle robo1Rec = new Rectangle(x, y, size, size);
+            Rectangle robo2Rec = new Rectangle(x, y, size, size);
 
-            if (LWallRec.IntersectsWith(jedi1Rec))
+            if (wallsRec.IntersectsWith(robo1Rec))
             {
-
                 wallBounce.Play();
             }
-
-            return LWallRec.IntersectsWith(jedi1Rec) || TWallRec.IntersectsWith(jedi1Rec);
+            else if (wallsRec.IntersectsWith(robo2Rec))
+            {
+                wallBounce.Play();
+            }
+            return wallsRec.IntersectsWith(robo1Rec) || wallsRec.IntersectsWith(robo2Rec);
         }
     }
 }

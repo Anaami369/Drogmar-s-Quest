@@ -18,7 +18,7 @@ namespace Drogmar_s_Quest
         public Players(int _x, int _y, int _playerSize)
         {
             x = _x;
-            y = _y; 
+            y = _y;
             playerSize = _playerSize;
         }
 
@@ -66,27 +66,23 @@ namespace Drogmar_s_Quest
 
         public bool WallsCollision(Walls w)
         {
-            Rectangle LWallsRec = new Rectangle(w.x, w.y, 27, 2);
-            Rectangle TWallsRec = new Rectangle(w.x, w.y, 2, 27);
+            Rectangle wallsRec = new Rectangle(w.startX, w.startY, w.endX - w.startX, w.endY - w.startY);
             Rectangle playerRec = new Rectangle(x, y, size, size);
 
-            if (playerRec.IntersectsWith(LWallsRec))
+            if (w.startX == w.endX)
             {
-                wallBounce.Play();
+                wallsRec.Width = 5;
             }
-            else if (playerRec.IntersectsWith(LWallsRec))
+            else if (w.startY == w.endY)
             {
-                wallBounce.Play();
+                wallsRec.Height = 5;
             }
-            else if (playerRec.IntersectsWith(TWallsRec))
-            {
-                wallBounce.Play();
-            }
-            else if (playerRec.IntersectsWith(TWallsRec))
-            {
-                wallBounce.Play();
-            }
-            return LWallsRec.IntersectsWith(playerRec) || TWallsRec.IntersectsWith(playerRec);
+
+            //if (playerRec.IntersectsWith(wallsRec))
+            //{
+            //    wallBounce.Play();
+            //}
+            return wallsRec.IntersectsWith(playerRec);
         }
     }
 }

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Media;
 using System.Xml;
+using System.Drawing.Configuration;
 
 namespace Drogmar_s_Quest
 {
@@ -50,6 +51,8 @@ namespace Drogmar_s_Quest
         Image yoda = Properties.Resources.mainPlayer;
         Image robo1 = Properties.Resources.jedi1;
         Image robo2 = Properties.Resources.jedi2;
+
+        Pen whitePen = new Pen(Color.White, 5);
         #endregion
 
         public EasyScreen()
@@ -66,7 +69,7 @@ namespace Drogmar_s_Quest
 
         private void resumeButton_Click(object sender, EventArgs e)
         {
-            if (level < 6)
+            if (level <= 1)
             {
                 gameTimer.Enabled = true;
                 pauseLabel.Visible = false;
@@ -85,30 +88,30 @@ namespace Drogmar_s_Quest
 
         private void EasyScreen_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
-                //player 1 button presses
-                switch (e.KeyCode)
-                {
-                    case Keys.Up:
-                        upArrowDown = true;
-                        break;
-                    case Keys.Down:
-                        downArrowDown = true;
-                        break;
-                    case Keys.Left:
-                        leftArrowDown = true;
-                        break;
-                    case Keys.Right:
-                        rightArrowDown = true;
-                        break;
-                    case Keys.Escape:
-                        escKeyDown = true;
-                        break;
-                    case Keys.Space:
-                        spaceDown = true;
-                        break;
+            //player 1 button presses
+            switch (e.KeyCode)
+            {
+                case Keys.Up:
+                    upArrowDown = true;
+                    break;
+                case Keys.Down:
+                    downArrowDown = true;
+                    break;
+                case Keys.Left:
+                    leftArrowDown = true;
+                    break;
+                case Keys.Right:
+                    rightArrowDown = true;
+                    break;
+                case Keys.Escape:
+                    escKeyDown = true;
+                    break;
+                case Keys.Space:
+                    spaceDown = true;
+                    break;
 
-                    default:
-                        break;
+                default:
+                    break;
             }
         }
 
@@ -146,103 +149,89 @@ namespace Drogmar_s_Quest
             #region move hero
             if (leftArrowDown == true)
             {
-                SoundPlayer soundPlayer = new SoundPlayer(Properties.Resources.jumpSound);
-                soundPlayer.Play();
-
                 player.Move(playerSpeed, "left");
             }
             else if (rightArrowDown == true)
             {
-                SoundPlayer soundPlayer = new SoundPlayer(Properties.Resources.jumpSound);
-                soundPlayer.Play();
-
                 player.Move(playerSpeed, "right");
             }
             else if (upArrowDown == true)
             {
-                SoundPlayer soundPlayer = new SoundPlayer(Properties.Resources.jumpSound);
-                soundPlayer.Play();
-
                 player.Move(playerSpeed, "up");
             }
             else if (downArrowDown == true)
             {
-                SoundPlayer soundPlayer = new SoundPlayer(Properties.Resources.jumpSound);
-                soundPlayer.Play();
-
                 player.Move(playerSpeed, "down");
             }
             #endregion
 
-            #region collision of player with walls
-
-            //not working
-            foreach (Walls w in walls)
-            {
-                Rectangle LWallsRec = new Rectangle(w.x, w.y, 27, 2);
-                Rectangle TWallsRec = new Rectangle(w.x, w.y, 2, 27); 
-                Rectangle playerRec = new Rectangle(player.x, player.y, player.size, player.size);
-
-                if (LWallsRec.IntersectsWith(playerRec))
-                {
-                    upArrowDown = false;
-                }
-                if (LWallsRec.IntersectsWith(playerRec))
-                {
-                    downArrowDown = false;
-                }
-                if (TWallsRec.IntersectsWith(playerRec))
-                {
-                    leftArrowDown = false;
-                }
-                if (TWallsRec.IntersectsWith(playerRec))
-                {
-                    rightArrowDown = false;
-                }
-            }
-            #endregion
-
-            #region collision of jedi with walls
+            //Rectangle playerRec = new Rectangle(player.x, player.y, playerSize, playerSize);
 
             foreach (Walls w in walls)
             {
-                Rectangle LWallsRec = new Rectangle(w.x, w.y, 27, 2);
-                Rectangle TWallsRec = new Rectangle(w.x, w.y, 2, 27);
-                Rectangle robo1Rec = new Rectangle(jedi1.x, jedi1.y, jedi1.size, jedi1.size);
+                //Rectangle wallsRec = new Rectangle(w.startX, w.startY, w.endX - w.startX, w.endY - w.startY);
 
-                if (robo1Rec.IntersectsWith(LWallsRec))
+                if (player.WallsCollision(w))
                 {
-                    if (jedi1.y >= w.y - jedi1.size && jedi1.y <= w.y + 2)
-                    {
-                        jedi1.ySpeed = jedi1.ySpeed * -1;
-                    }
-                    else if (wall.x <= w.x + 27 && wall.x >= w.x)
-                    {
-                        jedi1.xSpeed = jedi1.xSpeed * -1;
-                    }
-                }
-                if (robo1Rec.IntersectsWith(TWallsRec))
-                {
-                    if (wall.x <= w.x + 27 && wall.x >= w.x)
-                    {
-                        jedi1.xSpeed = jedi1.xSpeed * -1;
-                    }
-                    else if (jedi1.y >= w.y - jedi1.size && jedi1.y <= w.y + 2)
-                    {
-                        jedi1.ySpeed = jedi1.ySpeed * -1;
-                    }
-                }
+                    int x = 7;
 
-                SoundPlayer brickPlayer = new SoundPlayer(Properties.Resources.lifeLost);
-                brickPlayer.Play();
+                    #region collision of player with walls
+                    //not working
+
+                    //if (playerRec.IntersectsWith(wallsRec))
+                    //{
+                    //    if (player.y == w.startY - player.size)
+                    //    {
+                    //        player.y = w.startY + playerSize;
+                    //    }
+                    //    else if (player.y == w.startY - player.size)
+                    //    {
+                    //        player.y = w.startY - playerSize;
+                    //    }
+                    //    else if (player.x == w.startX - player.size)
+                    //    {
+                    //        player.x = w.startX + playerSize;
+                    //    }
+                    //    else if (player.x == w.startX - player.size)
+                    //    {
+                    //        player.x = w.startX - playerSize;
+                    //    }
+                    //}
+                    #endregion
+
+                    #region collision of jedi with walls
+                    //Rectangle robo1Rec = new Rectangle(jedi1.x, jedi1.y, jedi1.size, jedi1.size);
+
+                    //if (robo1Rec.IntersectsWith(wallsRec))
+                    //{
+                    //    if (jedi1.y > w.startY - jedi1.size)
+                    //    {
+                    //        jedi1.Move(jediSpeed, "right");
+                    //    }
+                    //    else if (jedi1.y < w.startY - jedi1.size)
+                    //    {
+                    //        jedi1.Move(jediSpeed, "left");
+                    //    }
+                    //    else if (jedi1.x < w.startX - jedi1.size)
+                    //    {
+                    //        jedi1.Move(jediSpeed, "up");
+                    //    }
+                    //    else if (jedi1.x > w.startX - jedi1.size)
+                    //    {
+                    //        jedi1.Move(jediSpeed, "down");
+                    //    }
+
+                    //    SoundPlayer brickPlayer = new SoundPlayer(Properties.Resources.lifeLost);
+                    //    brickPlayer.Play();
+                    //}
+
+                    #endregion
+
+                    pauseScreenEnabled();
+                }
             }
-
-            #endregion
-
-            pauseScreenEnabled();
             Refresh();
         }
-
         private void LevelLoad()
         {
 
@@ -254,16 +243,22 @@ namespace Drogmar_s_Quest
 
                 if (reader.NodeType == XmlNodeType.Text)
                 {
-                    int x = Convert.ToInt32(reader.ReadString());
+                    int startX = Convert.ToInt32(reader.ReadString());
 
-                    reader.ReadToNextSibling("y");
-                    int y = Convert.ToInt32(reader.ReadString());
+                    reader.ReadToNextSibling("startY");
+                    int startY = Convert.ToInt32(reader.ReadString());
+
+                    reader.ReadToNextSibling("endX");
+                    int endX = Convert.ToInt32(reader.ReadString());
+
+                    reader.ReadToNextSibling("endY");
+                    int endY = Convert.ToInt32(reader.ReadString());
 
                     reader.ReadToNextSibling("hp");
                     int hp = Convert.ToInt32(reader.ReadString());
 
 
-                    Walls newWall = new Walls(x, y, hp);
+                    Walls newWall = new Walls(startX, startY, endX, endY, hp);
                     walls.Add(newWall);
                 }
             }
@@ -340,8 +335,45 @@ namespace Drogmar_s_Quest
             player = new Players(this.Width / 2 - playerSize / 2, 352, playerSize);
             jedi1 = new Jedi(this.Width / 2 - jediSize / 2, 372, jediSize);
             jedi2 = new Jedi(this.Width / 2 - jediSize / 2, 392, jediSize);
+
+            //JediMove();
         }
 
+        public void JediMove()
+        {
+            Random jediGen = new Random();
+
+            foreach (Jedi j in jedi)
+            {
+                int randJedi = jediGen.Next(1, 6);
+
+                if (randJedi == 1)
+                {
+                    jedi1.Move(jediSpeed, "right");
+                    jedi2.Move(jediSpeed, "down");
+                }
+                else if (randJedi == 2)
+                {
+                    jedi1.Move(jediSpeed, "left");
+                    jedi2.Move(jediSpeed, "up");
+                }
+                else if (randJedi == 3)
+                {
+                    jedi1.Move(jediSpeed, "right");
+                    jedi2.Move(jediSpeed, "left");
+                }
+                else if (randJedi == 4)
+                {
+                    jedi1.Move(jediSpeed, "left");
+                    jedi2.Move(jediSpeed, "Down");
+                }
+                else if (randJedi == 5)
+                {
+                    jedi1.Move(jediSpeed, "right");
+                    jedi2.Move(jediSpeed, "up");
+                }
+            }
+        }
         private void EasyScreen_Paint(object sender, PaintEventArgs e)
         {
             #region draw hero character
@@ -356,22 +388,7 @@ namespace Drogmar_s_Quest
             #region draw walls
             foreach (Walls w in walls)
             {
-                if (w.hp == 1)
-                {
-                    e.Graphics.DrawImage(Properties.Resources.long_white_line1, w.x, w.y, 27, 2);
-                }
-                else if (w.hp == 2)
-                {
-                    e.Graphics.DrawImage(Properties.Resources.long_white_line1, w.x, w.y, 27, 2);
-                }
-                else if (w.hp == 3)
-                {
-                    e.Graphics.DrawImage(Properties.Resources.tall_white_line1, w.x, w.y, 2, 27);
-                }
-                else if (w.hp == 4)
-                {
-                    e.Graphics.DrawImage(Properties.Resources.tall_white_line1, w.x, w.y, 2, 27);
-                }
+                e.Graphics.DrawLine(whitePen, w.startX, w.startY, w.endX, w.endY);
                 #endregion
             }
         }
