@@ -10,20 +10,7 @@ namespace Drogmar_s_Quest
 {
     class Jedi
     {
-        public int x, y, size, xSpeed, ySpeed, jediSize;
-        public Color color;
-
-        SoundPlayer wallBounce = new SoundPlayer(Properties.Resources.lifeLost);
-
-        public Jedi(int _x, int _y, int _size, int _xSpeed, int _ySpeed, Color _color)
-        {
-            x = _x;
-            y = _y;
-            size = _size;
-            xSpeed = _xSpeed;
-            ySpeed = _ySpeed;
-            color = _color;
-        }
+        public int x, y, jediSize;
 
         public Jedi(int _x, int _y, int _jediSize)
         {
@@ -43,7 +30,6 @@ namespace Drogmar_s_Quest
             {
                 x -= speed;
             }
-
             else if (direction == "up")
             {
                 y -= speed;
@@ -54,20 +40,21 @@ namespace Drogmar_s_Quest
             }
         }
 
-        public bool WallCollision(Walls w)
+        public bool WallsCollision(Walls w)
         {
-            Rectangle wallsRec = new Rectangle(w.startX, w.startY, w.endX, w.endY);
-            Rectangle robo1Rec = new Rectangle(x, y, size, size);
-            Rectangle robo2Rec = new Rectangle(x, y, size, size);
+            Rectangle wallsRec = new Rectangle(w.startX, w.startY, w.endX - w.startX, w.endY - w.startY);
+            Rectangle robo1Rec = new Rectangle(x, y, jediSize, jediSize);
+            Rectangle robo2Rec = new Rectangle(x, y, jediSize, jediSize);
 
-            if (wallsRec.IntersectsWith(robo1Rec))
+            if (w.startX == w.endX)
             {
-                wallBounce.Play();
+                wallsRec.Width = 5;
             }
-            else if (wallsRec.IntersectsWith(robo2Rec))
+            else if (w.startY == w.endY)
             {
-                wallBounce.Play();
+                wallsRec.Height = 5;
             }
+
             return wallsRec.IntersectsWith(robo1Rec) || wallsRec.IntersectsWith(robo2Rec);
         }
     }

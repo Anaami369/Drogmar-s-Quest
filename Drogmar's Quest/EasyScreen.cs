@@ -29,23 +29,20 @@ namespace Drogmar_s_Quest
         int lives = 3;
         public static int score = 0;
         int level = 1;
-        int counter = 1;
+        int counter = 0;
 
         // lists
         List<Walls> walls = new List<Walls>();
-        List<Jedi> jedi = new List<Jedi>(0);
         public static List<string> scores = new List<string>();
 
         Players player;
         Jedi jedi1;
         Jedi jedi2;
 
-        Walls wall;
-
         int playerSpeed = 10;
         int playerSize = 20;
 
-        int jediSpeed = 7;
+        int jediSpeed = 10;
         int jediSize = 20;
 
         Image yoda = Properties.Resources.mainPlayer;
@@ -53,6 +50,8 @@ namespace Drogmar_s_Quest
         Image robo2 = Properties.Resources.jedi2;
 
         Pen whitePen = new Pen(Color.White, 5);
+
+        SoundPlayer wallBounce = new SoundPlayer(Properties.Resources.lifeLost);
         #endregion
 
         public EasyScreen()
@@ -146,6 +145,18 @@ namespace Drogmar_s_Quest
 
         private void gameTimer_Tick(object sender, EventArgs e)
         {
+
+            int pX = player.x;
+            int pY = player.y;
+
+            int j1X = jedi1.x;
+            int j1Y = jedi1.y;
+
+            if (counter == 0)
+            {
+                jedi1.Move(jediSpeed, "right");
+            }
+
             #region move hero
             if (leftArrowDown == true)
             {
@@ -165,72 +176,71 @@ namespace Drogmar_s_Quest
             }
             #endregion
 
-            //Rectangle playerRec = new Rectangle(player.x, player.y, playerSize, playerSize);
-
             foreach (Walls w in walls)
             {
-                //Rectangle wallsRec = new Rectangle(w.startX, w.startY, w.endX - w.startX, w.endY - w.startY);
+                #region collision of player with walls
 
                 if (player.WallsCollision(w))
                 {
-                    int x = 7;
-
-                    #region collision of player with walls
-                    //not working
-
-                    //if (playerRec.IntersectsWith(wallsRec))
-                    //{
-                    //    if (player.y == w.startY - player.size)
-                    //    {
-                    //        player.y = w.startY + playerSize;
-                    //    }
-                    //    else if (player.y == w.startY - player.size)
-                    //    {
-                    //        player.y = w.startY - playerSize;
-                    //    }
-                    //    else if (player.x == w.startX - player.size)
-                    //    {
-                    //        player.x = w.startX + playerSize;
-                    //    }
-                    //    else if (player.x == w.startX - player.size)
-                    //    {
-                    //        player.x = w.startX - playerSize;
-                    //    }
-                    //}
-                    #endregion
-
-                    #region collision of jedi with walls
-                    //Rectangle robo1Rec = new Rectangle(jedi1.x, jedi1.y, jedi1.size, jedi1.size);
-
-                    //if (robo1Rec.IntersectsWith(wallsRec))
-                    //{
-                    //    if (jedi1.y > w.startY - jedi1.size)
-                    //    {
-                    //        jedi1.Move(jediSpeed, "right");
-                    //    }
-                    //    else if (jedi1.y < w.startY - jedi1.size)
-                    //    {
-                    //        jedi1.Move(jediSpeed, "left");
-                    //    }
-                    //    else if (jedi1.x < w.startX - jedi1.size)
-                    //    {
-                    //        jedi1.Move(jediSpeed, "up");
-                    //    }
-                    //    else if (jedi1.x > w.startX - jedi1.size)
-                    //    {
-                    //        jedi1.Move(jediSpeed, "down");
-                    //    }
-
-                    //    SoundPlayer brickPlayer = new SoundPlayer(Properties.Resources.lifeLost);
-                    //    brickPlayer.Play();
-                    //}
-
-                    #endregion
-
-                    pauseScreenEnabled();
+                    player.x = pX;
+                    player.y = pY;
                 }
+                #endregion
+
+                #region collision of jedi with walls
+                if (jedi1.WallsCollision(w))
+                {
+                    //int x = 7;
+                    jedi1.x = j1X;
+                    jedi1.y = j1Y;
+
+                    Random jediGen = new Random();
+                    int jediDirection = jediGen.Next(1, 5);
+
+                    if (jediDirection == 1)
+                    {
+                        counter += 2;
+                    }
+                    else if (jediDirection == 2)
+                    {
+                        counter += 3;
+                    }
+                    else if (jediDirection == 3)
+                    {
+                        counter += 7;
+                    }
+                    else if (jediDirection == 4)
+                    {
+                        counter += 5;
+                    }
+
+                    if (counter % 2 == 0)
+                    {
+                        jedi1.Move(jediSpeed, "up");
+                    }
+                    else if (counter % 3 == 0)
+                    {
+                        jedi1.Move(jediSpeed, "down");
+                    }
+                    else if (counter % 7 == 0)
+                    {
+                        jedi1.Move(jediSpeed, "left");
+                    }
+                    else if (counter % 5 == 0)
+                    {
+                        jedi1.Move(jediSpeed, "right");
+                    }
+                }
+
+                else if (jedi2.WallsCollision(w))
+                {
+
+                }
+                #endregion
+
+                pauseScreenEnabled();
+                Refresh();
             }
-            Refresh();
         }
         private void LevelLoad()
         {
@@ -330,50 +340,14 @@ namespace Drogmar_s_Quest
             // start the game engine loop
             gameTimer.Enabled = true;
 
-            scoreKeeper.Text = "Lives: " + score;
+            scoreKeeper.Text = "Lives: " + lives;
 
             player = new Players(this.Width / 2 - playerSize / 2, 352, playerSize);
             jedi1 = new Jedi(this.Width / 2 - jediSize / 2, 372, jediSize);
             jedi2 = new Jedi(this.Width / 2 - jediSize / 2, 392, jediSize);
 
-            //JediMove();
         }
 
-        public void JediMove()
-        {
-            Random jediGen = new Random();
-
-            foreach (Jedi j in jedi)
-            {
-                int randJedi = jediGen.Next(1, 6);
-
-                if (randJedi == 1)
-                {
-                    jedi1.Move(jediSpeed, "right");
-                    jedi2.Move(jediSpeed, "down");
-                }
-                else if (randJedi == 2)
-                {
-                    jedi1.Move(jediSpeed, "left");
-                    jedi2.Move(jediSpeed, "up");
-                }
-                else if (randJedi == 3)
-                {
-                    jedi1.Move(jediSpeed, "right");
-                    jedi2.Move(jediSpeed, "left");
-                }
-                else if (randJedi == 4)
-                {
-                    jedi1.Move(jediSpeed, "left");
-                    jedi2.Move(jediSpeed, "Down");
-                }
-                else if (randJedi == 5)
-                {
-                    jedi1.Move(jediSpeed, "right");
-                    jedi2.Move(jediSpeed, "up");
-                }
-            }
-        }
         private void EasyScreen_Paint(object sender, PaintEventArgs e)
         {
             #region draw hero character
