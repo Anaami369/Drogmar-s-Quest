@@ -38,40 +38,18 @@ namespace Drogmar_s_Quest
         {
             playUnderline.Visible = true;
             exitUnderline.Visible = false;
-            highScoreUnderline.Visible = false;
-        }
-
-        private void highScoreButton_Click(object sender, EventArgs e)
-        {
-            // Goes to the high scores screen
-            HighScoreScreen hs = new HighScoreScreen();
-            Form form = this.FindForm();
-
-            form.Controls.Remove(this);
-            form.Controls.Add(hs);
-
-            hs.Location = new Point((form.Width - hs.Width) / 2, (form.Height - hs.Height) / 2);
-        }
-
-        private void highScoreButton_Enter(object sender, EventArgs e)
-        {
-            playUnderline.Visible = false;
-            exitUnderline.Visible = false;
-            highScoreUnderline.Visible = true;
         }
 
         private void exitButton_Enter(object sender, EventArgs e)
         {
             playUnderline.Visible = false;
             exitUnderline.Visible = true;
-            highScoreUnderline.Visible = false;
         }
 
         private void MenuScreen_Load(object sender, EventArgs e)
         {
             playUnderline.Visible = false;
             exitUnderline.Visible = false;
-            highScoreUnderline.Visible = false;
         }
     }
 }

@@ -28,31 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.highScoreButton = new System.Windows.Forms.Button();
             this.playButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.highScoreUnderline = new System.Windows.Forms.Button();
             this.playUnderline = new System.Windows.Forms.Button();
             this.exitButton = new System.Windows.Forms.Button();
             this.exitUnderline = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // highScoreButton
-            // 
-            this.highScoreButton.BackColor = System.Drawing.Color.Transparent;
-            this.highScoreButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.highScoreButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSalmon;
-            this.highScoreButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.highScoreButton.Font = new System.Drawing.Font("Times New Roman", 20F, System.Drawing.FontStyle.Bold);
-            this.highScoreButton.ForeColor = System.Drawing.Color.Cyan;
-            this.highScoreButton.Location = new System.Drawing.Point(638, 390);
-            this.highScoreButton.Name = "highScoreButton";
-            this.highScoreButton.Size = new System.Drawing.Size(194, 77);
-            this.highScoreButton.TabIndex = 4;
-            this.highScoreButton.Text = "High Scores";
-            this.highScoreButton.UseVisualStyleBackColor = false;
-            this.highScoreButton.Click += new System.EventHandler(this.highScoreButton_Click);
-            this.highScoreButton.Enter += new System.EventHandler(this.highScoreButton_Enter);
             // 
             // playButton
             // 
@@ -63,7 +44,7 @@
             this.playButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.playButton.Font = new System.Drawing.Font("Times New Roman", 20F, System.Drawing.FontStyle.Bold);
             this.playButton.ForeColor = System.Drawing.Color.Cyan;
-            this.playButton.Location = new System.Drawing.Point(398, 390);
+            this.playButton.Location = new System.Drawing.Point(535, 372);
             this.playButton.Name = "playButton";
             this.playButton.Size = new System.Drawing.Size(194, 77);
             this.playButton.TabIndex = 3;
@@ -84,22 +65,6 @@
             this.label1.Text = "WELCOME TO DROGMAR\'S QUEST";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // highScoreUnderline
-            // 
-            this.highScoreUnderline.BackColor = System.Drawing.Color.Transparent;
-            this.highScoreUnderline.BackgroundImage = global::Drogmar_s_Quest.Properties.Resources.lightSaber;
-            this.highScoreUnderline.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.highScoreUnderline.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.highScoreUnderline.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSalmon;
-            this.highScoreUnderline.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.highScoreUnderline.Font = new System.Drawing.Font("Times New Roman", 20F, System.Drawing.FontStyle.Bold);
-            this.highScoreUnderline.ForeColor = System.Drawing.Color.Black;
-            this.highScoreUnderline.Location = new System.Drawing.Point(638, 473);
-            this.highScoreUnderline.Name = "highScoreUnderline";
-            this.highScoreUnderline.Size = new System.Drawing.Size(194, 28);
-            this.highScoreUnderline.TabIndex = 12;
-            this.highScoreUnderline.UseVisualStyleBackColor = false;
-            // 
             // playUnderline
             // 
             this.playUnderline.BackColor = System.Drawing.Color.Transparent;
@@ -110,7 +75,7 @@
             this.playUnderline.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.playUnderline.Font = new System.Drawing.Font("Times New Roman", 20F, System.Drawing.FontStyle.Bold);
             this.playUnderline.ForeColor = System.Drawing.Color.Black;
-            this.playUnderline.Location = new System.Drawing.Point(398, 472);
+            this.playUnderline.Location = new System.Drawing.Point(535, 454);
             this.playUnderline.Name = "playUnderline";
             this.playUnderline.Size = new System.Drawing.Size(194, 28);
             this.playUnderline.TabIndex = 13;
@@ -125,7 +90,7 @@
             this.exitButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.exitButton.Font = new System.Drawing.Font("Times New Roman", 20F, System.Drawing.FontStyle.Bold);
             this.exitButton.ForeColor = System.Drawing.Color.Cyan;
-            this.exitButton.Location = new System.Drawing.Point(155, 390);
+            this.exitButton.Location = new System.Drawing.Point(292, 372);
             this.exitButton.Name = "exitButton";
             this.exitButton.Size = new System.Drawing.Size(194, 77);
             this.exitButton.TabIndex = 15;
@@ -140,7 +105,7 @@
             this.exitUnderline.BackgroundImage = global::Drogmar_s_Quest.Properties.Resources.lightSaber;
             this.exitUnderline.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.exitUnderline.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.exitUnderline.Location = new System.Drawing.Point(155, 471);
+            this.exitUnderline.Location = new System.Drawing.Point(292, 453);
             this.exitUnderline.Name = "exitUnderline";
             this.exitUnderline.Size = new System.Drawing.Size(194, 29);
             this.exitUnderline.TabIndex = 16;
@@ -155,9 +120,7 @@
             this.Controls.Add(this.exitUnderline);
             this.Controls.Add(this.exitButton);
             this.Controls.Add(this.playUnderline);
-            this.Controls.Add(this.highScoreUnderline);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.highScoreButton);
             this.Controls.Add(this.playButton);
             this.DoubleBuffered = true;
             this.Name = "MenuScreen";
@@ -168,11 +131,8 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button highScoreButton;
         private System.Windows.Forms.Button playButton;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button highScoreUnderline;
         private System.Windows.Forms.Button playUnderline;
         private System.Windows.Forms.Button exitButton;
         private System.Windows.Forms.Button exitUnderline;

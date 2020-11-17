@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Media;
+using System.Xml;
 
 namespace Drogmar_s_Quest
 {
@@ -15,22 +16,35 @@ namespace Drogmar_s_Quest
     {
         #region global values
 
-        Boolean leftArrowDown, rightArrowDown, upArrowDown, downArrowDown, escKeyDown, spaceDown, gamePaused;
+        public static Boolean leftArrowDown, rightArrowDown, upArrowDown, downArrowDown, escKeyDown, spaceDown, gamePaused;
 
         // Game values
         int lives = 3;
         public static int score = 0;
         int level = 1;
-        int counter = 1;
+        int counter = 0;
 
         // lists
         List<Walls> walls = new List<Walls>();
         public static List<string> scores = new List<string>();
 
         Players player;
+        Jedi jedi1;
+        Jedi jedi2;
 
-        int playerSpeed = 20;
+        int playerSpeed = 10;
         int playerSize = 20;
+
+        int jediSpeed = 10;
+        int jediSize = 20;
+
+        Image yoda = Properties.Resources.mainPlayer;
+        Image robo1 = Properties.Resources.jedi1;
+        Image robo2 = Properties.Resources.jedi2;
+
+        Pen whitePen = new Pen(Color.White, 5);
+
+        SoundPlayer wallBounce = new SoundPlayer(Properties.Resources.lifeLost);
         #endregion
 
         public BossScreen()
@@ -106,7 +120,7 @@ namespace Drogmar_s_Quest
 
         private void resumeButton_Click(object sender, EventArgs e)
         {
-            if (level < 6)
+            if (level <= 1)
             {
                 gameTimer.Enabled = true;
                 pauseLabel.Visible = false;
@@ -125,39 +139,190 @@ namespace Drogmar_s_Quest
 
         private void gameTimer_Tick(object sender, EventArgs e)
         {
+            int pX = player.x;
+            int pY = player.y;
+
+            int j1X = jedi1.x;
+            int j1Y = jedi1.y;
+
+            int j2X = jedi2.x;
+            int j2Y = jedi2.y;
+
+            if (counter == 0)
+            {
+                jedi1.Move(jediSpeed);
+                jedi2.Move(jediSpeed);
+            }
+
             #region move hero
             if (leftArrowDown == true)
             {
-                SoundPlayer soundPlayer = new SoundPlayer(Properties.Resources.jumpSound);
-                soundPlayer.Play();
-
                 player.Move(playerSpeed, "left");
             }
             else if (rightArrowDown == true)
             {
-                SoundPlayer soundPlayer = new SoundPlayer(Properties.Resources.jumpSound);
-                soundPlayer.Play();
-
                 player.Move(playerSpeed, "right");
             }
             else if (upArrowDown == true)
             {
-                SoundPlayer soundPlayer = new SoundPlayer(Properties.Resources.jumpSound);
-                soundPlayer.Play();
-
                 player.Move(playerSpeed, "up");
             }
             else if (downArrowDown == true)
             {
-                SoundPlayer soundPlayer = new SoundPlayer(Properties.Resources.jumpSound);
-                soundPlayer.Play();
-
                 player.Move(playerSpeed, "down");
             }
             #endregion
 
-            pauseScreenEnabled();
+            foreach (Walls w in walls)
+            {
+                #region collision of player with walls
+
+                if (player.WallsCollision(w))
+                {
+                    player.x = pX;
+                    player.y = pY;
+                }
+            }
+            #endregion
+
+            #region collision of jedi with walls
+            foreach (Walls w in walls)
+            {
+                if (jedi1.WallsCollision(w))
+                {
+                    jedi1.x = j1X;
+                    jedi1.y = j1Y;
+
+                    Random jediGen = new Random();
+                    int jediDirection = jediGen.Next(1, 5);
+
+                    if (jediDirection == 1)
+                    {
+                        jedi1.direction = "left";
+                    }
+                    else if (jediDirection == 2)
+                    {
+                        jedi1.direction = "up";
+                    }
+                    else if (jediDirection == 3)
+                    {
+                        jedi1.direction = "down";
+                    }
+                    else if (jediDirection == 4)
+                    {
+                        jedi1.direction = "right";
+
+                    }
+                }
+            }
+
+            foreach (Walls w in walls)
+            {
+                if (jedi2.WallsCollision(w))
+                {
+                    //int x = 7;
+                    jedi2.x = j2X;
+                    jedi2.y = j2Y;
+
+                    Random jediGen = new Random();
+                    int jediDirection = jediGen.Next(1, 5);
+
+                    if (jediDirection == 1)
+                    {
+                        jedi2.direction = "left";
+                    }
+                    else if (jediDirection == 2)
+                    {
+                        jedi2.direction = "up";
+                    }
+                    else if (jediDirection == 3)
+                    {
+                        jedi2.direction = "down";
+                    }
+                    else if (jediDirection == 4)
+                    {
+                        jedi2.direction = "right";
+                    }
+                }
+                #endregion
+                pauseScreenEnabled();
+            }
+
+            Rectangle jedi1Rec = new Rectangle(jedi1.x, jedi1.y, jediSize, jediSize);
+            Rectangle jedi2Rec = new Rectangle(jedi2.x, jedi2.y, jediSize, jediSize);
+            Rectangle playerRec = new Rectangle(player.x, player.y, playerSize, playerSize);
+
+            if (jedi1Rec.IntersectsWith(playerRec))
+            {
+                lives -= 1;
+                scoreKeeper.Text = "Lives: " + lives;
+            }
+
+            else if (jedi2Rec.IntersectsWith(playerRec))
+            {
+                lives -= 1;
+                scoreKeeper.Text = "Lives: " + lives;
+            }
+
+            if (lives == 0)
+            {
+                gameTimer.Stop();
+
+                Form f = this.FindForm();
+                f.Controls.Remove(this);
+
+                GameOverScreen gos = new GameOverScreen();
+                f.Controls.Add(gos);
+
+                gos.Location = new Point((f.Width - gos.Width) / 2, (f.Height - gos.Height) / 2);
+
+                gos.Focus();
+            }
+
+            if (jedi1.y >= 783)
+            {
+                jedi1.direction = "right";
+            }
+            else if (jedi2.y >= 783)
+            {
+                jedi2.direction = "up";
+            }
+            else if (player.y >= 783)
+            {
+                OnWin();
+            }
+
             Refresh();
+        }
+
+        private void LevelLoad()
+        {
+            XmlTextReader reader = new XmlTextReader("Resources/EasyLevel" + level + "XML.xml");
+
+            while (reader.Read())
+            {
+
+                if (reader.NodeType == XmlNodeType.Text)
+                {
+                    int startX = Convert.ToInt32(reader.ReadString());
+
+                    reader.ReadToNextSibling("startY");
+                    int startY = Convert.ToInt32(reader.ReadString());
+
+                    reader.ReadToNextSibling("endX");
+                    int endX = Convert.ToInt32(reader.ReadString());
+
+                    reader.ReadToNextSibling("endY");
+                    int endY = Convert.ToInt32(reader.ReadString());
+
+                    reader.ReadToNextSibling("hp");
+                    int hp = Convert.ToInt32(reader.ReadString());
+
+
+                    Walls newWall = new Walls(startX, startY, endX, endY, hp);
+                    walls.Add(newWall);
+                }
+            }
         }
 
         public void OnStart()
@@ -171,12 +336,17 @@ namespace Drogmar_s_Quest
             resumeButton.Enabled = false;
             resumeButton.Visible = false;
 
+            LevelLoad();
+
             // start the game engine loop
             gameTimer.Enabled = true;
 
-            scoreKeeper.Text = "Lives: " + score;
+            scoreKeeper.Text = "Lives: " + lives;
 
-            player = new Players(this.Width / 2 - playerSize / 2, 522, playerSize);
+            player = new Players(this.Width / 2 - playerSize / 2, 352, playerSize);
+            jedi1 = new Jedi(this.Width / 2 - 40 / 2, 610, 40);
+            jedi2 = new Jedi(this.Width / 2 - jediSize / 2, 510, jediSize);
+
         }
 
         public void pauseScreenEnabled()
@@ -224,15 +394,25 @@ namespace Drogmar_s_Quest
             pauseLabel.Text = "You Win!";
             menuButton.Enabled = true;
             menuButton.Visible = true;
-            resumeButton.Enabled = true;
-            resumeButton.Visible = true;
-            resumeButton.Text = "Quit Game";
+            menuButton.Text = "Quit Game";
         }
 
         private void BossScreen_Paint(object sender, PaintEventArgs e)
         {
             #region draw hero character
-            e.Graphics.DrawImage(Properties.Resources.mainPlayer, player.x, player.y, 10, 10);
+            e.Graphics.DrawImage(yoda, player.x, player.y, 20, 20);
+            #endregion
+
+            #region draw jedi characters
+            e.Graphics.DrawImage(robo1, jedi1.x, jedi1.y, 30, 30);
+            e.Graphics.DrawImage(robo2, jedi2.x, jedi2.y, 30, 30);
+            #endregion
+
+            #region draw walls
+            foreach (Walls w in walls)
+            {
+                e.Graphics.DrawLine(whitePen, w.startX, w.startY, w.endX, w.endY);
+            }
             #endregion
         }
     }

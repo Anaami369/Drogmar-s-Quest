@@ -34,6 +34,8 @@
             this.pauseLabel = new System.Windows.Forms.Label();
             this.gameTimer = new System.Windows.Forms.Timer(this.components);
             this.scoreKeeper = new System.Windows.Forms.Label();
+            this.timeKeeper = new System.Windows.Forms.Timer(this.components);
+            this.timeLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // resumeButton
@@ -92,12 +94,27 @@
             this.scoreKeeper.Size = new System.Drawing.Size(100, 23);
             this.scoreKeeper.TabIndex = 9;
             // 
+            // timeKeeper
+            // 
+            this.timeKeeper.Interval = 1000;
+            // 
+            // timeLabel
+            // 
+            this.timeLabel.BackColor = System.Drawing.Color.Transparent;
+            this.timeLabel.Font = new System.Drawing.Font("Algerian", 10F, System.Drawing.FontStyle.Bold);
+            this.timeLabel.ForeColor = System.Drawing.Color.White;
+            this.timeLabel.Location = new System.Drawing.Point(865, 12);
+            this.timeLabel.Name = "timeLabel";
+            this.timeLabel.Size = new System.Drawing.Size(100, 23);
+            this.timeLabel.TabIndex = 10;
+            // 
             // MediumScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Drogmar_s_Quest.Properties.Resources.yellowSpace;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Controls.Add(this.timeLabel);
             this.Controls.Add(this.scoreKeeper);
             this.Controls.Add(this.resumeButton);
             this.Controls.Add(this.menuButton);
@@ -119,5 +136,7 @@
         private System.Windows.Forms.Label pauseLabel;
         private System.Windows.Forms.Timer gameTimer;
         private System.Windows.Forms.Label scoreKeeper;
+        private System.Windows.Forms.Timer timeKeeper;
+        private System.Windows.Forms.Label timeLabel;
     }
 }

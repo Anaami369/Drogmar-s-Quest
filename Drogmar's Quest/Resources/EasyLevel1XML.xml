@@ -8,28 +8,14 @@
     <hp>1</hp>
   </walls>
   <walls>
-    <startX>282</startX>
-    <startY>160</startY>
-    <endX>400</endX>
-    <endY>160</endY>
-    <hp>1</hp>
-  </walls>
-  <walls>
-    <startX>440</startX>
+    <startX>342</startX>
     <startY>160</startY>
     <endX>725</endX>
     <endY>160</endY>
     <hp>1</hp>
   </walls>
   <walls>
-    <startX>205</startX>
-    <startY>84</startY>
-    <endX>360</endX>
-    <endY>84</endY>
-    <hp>1</hp>
-  </walls>
-  <walls>
-    <startX>400</startX>
+    <startX>265</startX>
     <startY>84</startY>
     <endX>798</endX>
     <endY>84</endY>
@@ -59,14 +45,7 @@
   <walls>
     <startX>205</startX>
     <startY>648</startY>
-    <endX>360</endX>
-    <endY>648</endY>
-    <hp>2</hp>
-  </walls>
-  <walls>
-    <startX>400</startX>
-    <startY>648</startY>
-    <endX>798</endX>
+    <endX>738</endX>
     <endY>648</endY>
     <hp>2</hp>
   </walls>
@@ -93,13 +72,6 @@
   </walls>
   <walls>
     <startX>428</startX>
-    <startY>420</startY>
-    <endX>579</endX>
-    <endY>420</endY>
-    <hp>2</hp>
-  </walls>
-  <walls>
-    <startX>428</startX>
     <startY>310</startY>
     <endX>428</endX>
     <endY>423</endY>
@@ -107,14 +79,7 @@
   </walls>
   <walls>
     <startX>354</startX>
-    <startY>234</startY>
-    <endX>354</endX>
-    <endY>263</endY>
-    <hp>3</hp>
-  </walls>
-  <walls>
-    <startX>354</startX>
-    <startY>303</startY>
+    <startY>274</startY>
     <endX>354</endX>
     <endY>499</endY>
     <hp>3</hp>
@@ -229,13 +194,6 @@
     <startY>450</startY>
     <endX>724</endX>
     <endY>450</endY>
-    <hp>2</hp>
-  </walls>
-  <walls>
-    <startX>649</startX>
-    <startY>385</startY>
-    <endX>577</endX>
-    <endY>385</endY>
     <hp>2</hp>
   </walls>
   <walls>

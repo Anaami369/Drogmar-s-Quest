@@ -13,11 +13,6 @@ using System.Drawing.Configuration;
 
 namespace Drogmar_s_Quest
 {
-    //hp = 1 (up)
-    //hp = 2 (down)
-    //hp = 3 (left)
-    //hp = 4 (right)
-    //difference = 76
 
     public partial class EasyScreen : UserControl
     {
@@ -26,13 +21,14 @@ namespace Drogmar_s_Quest
         public static Boolean leftArrowDown, rightArrowDown, upArrowDown, downArrowDown, escKeyDown, spaceDown, gamePaused;
 
         // Game values
-        int lives = 3;
+        int lives = 1;
         public static int score = 0;
         int level = 1;
         int counter = 0;
 
         // lists
         List<Walls> walls = new List<Walls>();
+        List<Jedi> jedi = new List<Jedi>();
         public static List<string> scores = new List<string>();
 
         Players player;
@@ -152,9 +148,13 @@ namespace Drogmar_s_Quest
             int j1X = jedi1.x;
             int j1Y = jedi1.y;
 
+            int j2X = jedi2.x;
+            int j2Y = jedi2.y;
+
             if (counter == 0)
             {
-                jedi1.Move(jediSpeed, "right");
+                jedi1.Move(jediSpeed);
+                jedi2.Move(jediSpeed);
             }
 
             #region move hero
@@ -185,12 +185,14 @@ namespace Drogmar_s_Quest
                     player.x = pX;
                     player.y = pY;
                 }
-                #endregion
+            }
+            #endregion
 
-                #region collision of jedi with walls
+            #region collision of jedi with walls
+            foreach (Walls w in walls)
+            {
                 if (jedi1.WallsCollision(w))
                 {
-                    //int x = 7;
                     jedi1.x = j1X;
                     jedi1.y = j1Y;
 
@@ -199,49 +201,103 @@ namespace Drogmar_s_Quest
 
                     if (jediDirection == 1)
                     {
-                        counter += 2;
+                        jedi1.direction = "left";
                     }
                     else if (jediDirection == 2)
                     {
-                        counter += 3;
+                        jedi1.direction = "up";
                     }
                     else if (jediDirection == 3)
                     {
-                        counter += 7;
+                        jedi1.direction = "down";
                     }
                     else if (jediDirection == 4)
                     {
-                        counter += 5;
-                    }
+                        jedi1.direction = "right";
 
-                    if (counter % 2 == 0)
-                    {
-                        jedi1.Move(jediSpeed, "up");
-                    }
-                    else if (counter % 3 == 0)
-                    {
-                        jedi1.Move(jediSpeed, "down");
-                    }
-                    else if (counter % 7 == 0)
-                    {
-                        jedi1.Move(jediSpeed, "left");
-                    }
-                    else if (counter % 5 == 0)
-                    {
-                        jedi1.Move(jediSpeed, "right");
                     }
                 }
+            }
 
-                else if (jedi2.WallsCollision(w))
+            foreach (Walls w in walls)
+            {
+                if (jedi2.WallsCollision(w))
                 {
+                    //int x = 7;
+                    jedi2.x = j2X;
+                    jedi2.y = j2Y;
 
+                    Random jediGen = new Random();
+                    int jediDirection = jediGen.Next(1, 5);
+
+                    if (jediDirection == 1)
+                    {
+                        jedi2.direction = "left";
+                    }
+                    else if (jediDirection == 2)
+                    {
+                        jedi2.direction = "up";
+                    }
+                    else if (jediDirection == 3)
+                    {
+                        jedi2.direction = "down";
+                    }
+                    else if (jediDirection == 4)
+                    {
+                        jedi2.direction = "right";
+                    }
                 }
                 #endregion
-
                 pauseScreenEnabled();
-                Refresh();
             }
+
+            Rectangle jedi1Rec = new Rectangle(jedi1.x, jedi1.y, jediSize, jediSize);
+            Rectangle jedi2Rec = new Rectangle(jedi2.x, jedi2.y, jediSize, jediSize);
+            Rectangle playerRec = new Rectangle(player.x, player.y, playerSize, playerSize);
+
+            if (jedi1Rec.IntersectsWith(playerRec))
+            {
+                lives -= 1;
+                scoreKeeper.Text = "Lives: " + lives;
+            }
+
+            else if (jedi2Rec.IntersectsWith(playerRec))
+            {
+                lives -= 1;
+                scoreKeeper.Text = "Lives: " + lives;
+            }
+
+            if (lives == 0)
+            {
+                gameTimer.Stop();
+
+                Form f = this.FindForm();
+                f.Controls.Remove(this);
+
+                GameOverScreen gos = new GameOverScreen();
+                f.Controls.Add(gos);
+
+                gos.Location = new Point((f.Width - gos.Width) / 2, (f.Height - gos.Height) / 2);
+
+                gos.Focus();
+            }
+
+            if (jedi1.y >= 783)
+            {
+                jedi1.direction = "right";
+            }
+            else if (jedi2.y >= 777)
+            {
+                jedi2.direction = "up";
+            }
+            else if (player.y >= 777)
+            {
+                OnWin();
+            }
+
+            Refresh();
         }
+
         private void LevelLoad()
         {
 
@@ -319,9 +375,7 @@ namespace Drogmar_s_Quest
             pauseLabel.Text = "You Win!";
             menuButton.Enabled = true;
             menuButton.Visible = true;
-            resumeButton.Enabled = true;
-            resumeButton.Visible = true;
-            resumeButton.Text = "Quit Game";
+            menuButton.Text = "Quit Game";
         }
 
         public void OnStart()
@@ -343,8 +397,11 @@ namespace Drogmar_s_Quest
             scoreKeeper.Text = "Lives: " + lives;
 
             player = new Players(this.Width / 2 - playerSize / 2, 352, playerSize);
-            jedi1 = new Jedi(this.Width / 2 - jediSize / 2, 372, jediSize);
-            jedi2 = new Jedi(this.Width / 2 - jediSize / 2, 392, jediSize);
+            jedi1 = new Jedi(this.Width / 2 - 40 / 2, 610, 40);
+            jedi2 = new Jedi(this.Width / 2 - jediSize / 2, 510, jediSize);
+
+            jedi.Add(jedi1);
+            jedi.Add(jedi2);
 
         }
 
@@ -363,8 +420,8 @@ namespace Drogmar_s_Quest
             foreach (Walls w in walls)
             {
                 e.Graphics.DrawLine(whitePen, w.startX, w.startY, w.endX, w.endY);
-                #endregion
             }
+            #endregion
         }
     }
 }

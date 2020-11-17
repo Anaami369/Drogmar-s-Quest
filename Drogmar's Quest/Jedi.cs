@@ -11,6 +11,7 @@ namespace Drogmar_s_Quest
     class Jedi
     {
         public int x, y, jediSize;
+        public string direction = "right";
 
         public Jedi(int _x, int _y, int _jediSize)
         {
@@ -19,7 +20,7 @@ namespace Drogmar_s_Quest
             jediSize = _jediSize;
         }
 
-        public void Move(int speed, string direction)
+        public void Move(int speed)
         {
             //true represents right
             if (direction == "right")
@@ -43,8 +44,7 @@ namespace Drogmar_s_Quest
         public bool WallsCollision(Walls w)
         {
             Rectangle wallsRec = new Rectangle(w.startX, w.startY, w.endX - w.startX, w.endY - w.startY);
-            Rectangle robo1Rec = new Rectangle(x, y, jediSize, jediSize);
-            Rectangle robo2Rec = new Rectangle(x, y, jediSize, jediSize);
+            Rectangle jediRec = new Rectangle(x, y, jediSize, jediSize);
 
             if (w.startX == w.endX)
             {
@@ -55,7 +55,7 @@ namespace Drogmar_s_Quest
                 wallsRec.Height = 5;
             }
 
-            return wallsRec.IntersectsWith(robo1Rec) || wallsRec.IntersectsWith(robo2Rec);
+            return wallsRec.IntersectsWith(jediRec);
         }
     }
 }

@@ -41,7 +41,7 @@
             this.letter3Output.BackColor = System.Drawing.Color.White;
             this.letter3Output.Enabled = false;
             this.letter3Output.Font = new System.Drawing.Font("Algerian", 72F);
-            this.letter3Output.Location = new System.Drawing.Point(565, 200);
+            this.letter3Output.Location = new System.Drawing.Point(566, 277);
             this.letter3Output.Margin = new System.Windows.Forms.Padding(2);
             this.letter3Output.Name = "letter3Output";
             this.letter3Output.Size = new System.Drawing.Size(120, 120);
@@ -57,7 +57,7 @@
             this.letter2Output.BackColor = System.Drawing.Color.White;
             this.letter2Output.Enabled = false;
             this.letter2Output.Font = new System.Drawing.Font("Algerian", 72F);
-            this.letter2Output.Location = new System.Drawing.Point(441, 200);
+            this.letter2Output.Location = new System.Drawing.Point(442, 277);
             this.letter2Output.Margin = new System.Windows.Forms.Padding(2);
             this.letter2Output.Name = "letter2Output";
             this.letter2Output.Size = new System.Drawing.Size(120, 120);
@@ -72,7 +72,7 @@
             // 
             this.letter1Output.BackColor = System.Drawing.Color.White;
             this.letter1Output.Font = new System.Drawing.Font("Algerian", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.letter1Output.Location = new System.Drawing.Point(315, 200);
+            this.letter1Output.Location = new System.Drawing.Point(316, 277);
             this.letter1Output.Margin = new System.Windows.Forms.Padding(2);
             this.letter1Output.Name = "letter1Output";
             this.letter1Output.Size = new System.Drawing.Size(120, 120);
@@ -91,7 +91,7 @@
             this.exitButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSalmon;
             this.exitButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.exitButton.Font = new System.Drawing.Font("Algerian", 20F, System.Drawing.FontStyle.Bold);
-            this.exitButton.Location = new System.Drawing.Point(244, 412);
+            this.exitButton.Location = new System.Drawing.Point(245, 489);
             this.exitButton.Name = "exitButton";
             this.exitButton.Size = new System.Drawing.Size(194, 77);
             this.exitButton.TabIndex = 256;
@@ -111,7 +111,7 @@
             this.playAgainButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SpringGreen;
             this.playAgainButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.playAgainButton.Font = new System.Drawing.Font("Algerian", 20F, System.Drawing.FontStyle.Bold);
-            this.playAgainButton.Location = new System.Drawing.Point(568, 412);
+            this.playAgainButton.Location = new System.Drawing.Point(569, 489);
             this.playAgainButton.Name = "playAgainButton";
             this.playAgainButton.Size = new System.Drawing.Size(194, 77);
             this.playAgainButton.TabIndex = 255;
@@ -127,7 +127,7 @@
             this.gameOverLabel.BackColor = System.Drawing.Color.Transparent;
             this.gameOverLabel.Font = new System.Drawing.Font("Algerian", 50.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gameOverLabel.ForeColor = System.Drawing.Color.Orange;
-            this.gameOverLabel.Location = new System.Drawing.Point(0, 55);
+            this.gameOverLabel.Location = new System.Drawing.Point(1, 132);
             this.gameOverLabel.Name = "gameOverLabel";
             this.gameOverLabel.Size = new System.Drawing.Size(997, 105);
             this.gameOverLabel.TabIndex = 251;
@@ -148,7 +148,7 @@
             this.Controls.Add(this.gameOverLabel);
             this.DoubleBuffered = true;
             this.Name = "GameOverScreen";
-            this.Size = new System.Drawing.Size(1000, 1000);
+            this.Size = new System.Drawing.Size(1000, 788);
             this.Load += new System.EventHandler(this.GameOverScreen_Load);
             this.ResumeLayout(false);
 
