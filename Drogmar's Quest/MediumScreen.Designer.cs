@@ -36,6 +36,7 @@
             this.scoreKeeper = new System.Windows.Forms.Label();
             this.timeKeeper = new System.Windows.Forms.Timer(this.components);
             this.timeLabel = new System.Windows.Forms.Label();
+            this.playAgainButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // resumeButton
@@ -62,7 +63,7 @@
             this.menuButton.Name = "menuButton";
             this.menuButton.Size = new System.Drawing.Size(128, 38);
             this.menuButton.TabIndex = 7;
-            this.menuButton.Text = "return to menu";
+            this.menuButton.Text = "Quit game";
             this.menuButton.UseVisualStyleBackColor = false;
             this.menuButton.Click += new System.EventHandler(this.menuButton_Click);
             // 
@@ -108,12 +109,27 @@
             this.timeLabel.Size = new System.Drawing.Size(100, 23);
             this.timeLabel.TabIndex = 10;
             // 
+            // playAgainButton
+            // 
+            this.playAgainButton.BackColor = System.Drawing.Color.DarkGray;
+            this.playAgainButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.playAgainButton.Font = new System.Drawing.Font("Algerian", 10F);
+            this.playAgainButton.ForeColor = System.Drawing.Color.Blue;
+            this.playAgainButton.Location = new System.Drawing.Point(444, 438);
+            this.playAgainButton.Name = "playAgainButton";
+            this.playAgainButton.Size = new System.Drawing.Size(128, 38);
+            this.playAgainButton.TabIndex = 11;
+            this.playAgainButton.Text = "Play again";
+            this.playAgainButton.UseVisualStyleBackColor = false;
+            this.playAgainButton.Click += new System.EventHandler(this.playAgainButton_Click);
+            // 
             // MediumScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Drogmar_s_Quest.Properties.Resources.yellowSpace;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Controls.Add(this.playAgainButton);
             this.Controls.Add(this.timeLabel);
             this.Controls.Add(this.scoreKeeper);
             this.Controls.Add(this.resumeButton);
@@ -138,5 +154,6 @@
         private System.Windows.Forms.Label scoreKeeper;
         private System.Windows.Forms.Timer timeKeeper;
         private System.Windows.Forms.Label timeLabel;
+        private System.Windows.Forms.Button playAgainButton;
     }
 }

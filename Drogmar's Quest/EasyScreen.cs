@@ -36,10 +36,10 @@ namespace Drogmar_s_Quest
         Jedi jedi2;
 
         int playerSpeed = 10;
-        int playerSize = 20;
+        int playerSize = 30;
 
         int jediSpeed = 10;
-        int jediSize = 20;
+        int jediSize = 40;
 
         Image yoda = Properties.Resources.mainPlayer;
         Image robo1 = Properties.Resources.jedi1;
@@ -271,15 +271,14 @@ namespace Drogmar_s_Quest
             {
                 gameTimer.Stop();
 
-                Form f = this.FindForm();
-                f.Controls.Remove(this);
-
-                GameOverScreen gos = new GameOverScreen();
-                f.Controls.Add(gos);
-
-                gos.Location = new Point((f.Width - gos.Width) / 2, (f.Height - gos.Height) / 2);
-
-                gos.Focus();
+                pauseLabel.Visible = true;
+                pauseLabel.Text = "You Lose!";
+                menuButton.Enabled = true;
+                menuButton.Visible = true;
+                menuButton.Text = "Quit Game";
+                playAgainButton.Enabled = true;
+                playAgainButton.Visible = true;
+                playAgainButton.Text = "Play again";
             }
 
             if (jedi1.y >= 783)
@@ -296,6 +295,18 @@ namespace Drogmar_s_Quest
             }
 
             Refresh();
+        }
+
+        private void playAgainButton_Click(object sender, EventArgs e)
+        {
+            // Goes to the game screen
+            LevelScreen ls = new LevelScreen();
+            Form form = this.FindForm();
+
+            form.Controls.Add(ls);
+            form.Controls.Remove(this);
+
+            ls.Location = new Point((form.Width - ls.Width) / 2, (form.Height - ls.Height) / 2);
         }
 
         private void LevelLoad()
@@ -354,17 +365,7 @@ namespace Drogmar_s_Quest
 
         public void OnEnd()
         {
-            gameTimer.Stop();
-
-            Form f = this.FindForm();
-            f.Controls.Remove(this);
-
-            GameOverScreen gos = new GameOverScreen();
-            f.Controls.Add(gos);
-
-            gos.Location = new Point((f.Width - gos.Width) / 2, (f.Height - gos.Height) / 2);
-
-            gos.Focus();
+            Application.Exit();
         }
 
         public void OnWin()
@@ -376,6 +377,9 @@ namespace Drogmar_s_Quest
             menuButton.Enabled = true;
             menuButton.Visible = true;
             menuButton.Text = "Quit Game";
+            resumeButton.Enabled = true;
+            resumeButton.Visible = true;
+            resumeButton.Text = "Play again";
         }
 
         public void OnStart()
@@ -388,6 +392,8 @@ namespace Drogmar_s_Quest
             menuButton.Visible = false;
             resumeButton.Enabled = false;
             resumeButton.Visible = false;
+            playAgainButton.Enabled = false;
+            playAgainButton.Visible = false;
 
             LevelLoad();
 
@@ -397,7 +403,7 @@ namespace Drogmar_s_Quest
             scoreKeeper.Text = "Lives: " + lives;
 
             player = new Players(this.Width / 2 - playerSize / 2, 352, playerSize);
-            jedi1 = new Jedi(this.Width / 2 - 40 / 2, 610, 40);
+            jedi1 = new Jedi(this.Width / 2 - jediSize / 2, 610, jediSize);
             jedi2 = new Jedi(this.Width / 2 - jediSize / 2, 510, jediSize);
 
             jedi.Add(jedi1);
@@ -412,8 +418,8 @@ namespace Drogmar_s_Quest
             #endregion
 
             #region draw jedi characters
-            e.Graphics.DrawImage(robo1, jedi1.x, jedi1.y, 30, 30);
-            e.Graphics.DrawImage(robo2, jedi2.x, jedi2.y, 30, 30);
+            e.Graphics.DrawImage(robo1, jedi1.x, jedi1.y, 20, 20);
+            e.Graphics.DrawImage(robo2, jedi2.x, jedi2.y, 20, 20);
             #endregion
 
             #region draw walls

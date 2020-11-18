@@ -31,20 +31,23 @@ namespace Drogmar_s_Quest
         Players player;
         Jedi jedi1;
         Jedi jedi2;
+        Jedi jedi3;
+        Jedi jedi4;
 
-        int playerSpeed = 10;
-        int playerSize = 20;
+        int playerSpeed = 15;
+        int playerSize = 30;
 
-        int jediSpeed = 10;
-        int jediSize = 20;
+        int jediSpeed = 20;
+        int jediSize = 50;
 
         Image yoda = Properties.Resources.mainPlayer;
         Image robo1 = Properties.Resources.jedi1;
         Image robo2 = Properties.Resources.jedi2;
+        Image robo3 = Properties.Resources.Player1;
+        Image robo4 = Properties.Resources.Player2;
 
         Pen whitePen = new Pen(Color.White, 5);
 
-        SoundPlayer wallBounce = new SoundPlayer(Properties.Resources.lifeLost);
         #endregion
 
         public BossScreen()
@@ -148,10 +151,18 @@ namespace Drogmar_s_Quest
             int j2X = jedi2.x;
             int j2Y = jedi2.y;
 
+            int j3X = jedi3.x;
+            int j3Y = jedi3.y;
+
+            int j4X = jedi4.x;
+            int j4Y = jedi4.y;
+
             if (counter == 0)
             {
                 jedi1.Move(jediSpeed);
                 jedi2.Move(jediSpeed);
+                jedi3.Move(jediSpeed);
+                jedi4.Move(jediSpeed);
             }
 
             #region move hero
@@ -173,9 +184,9 @@ namespace Drogmar_s_Quest
             }
             #endregion
 
+            #region collision of player with walls
             foreach (Walls w in walls)
             {
-                #region collision of player with walls
 
                 if (player.WallsCollision(w))
                 {
@@ -244,12 +255,73 @@ namespace Drogmar_s_Quest
                         jedi2.direction = "right";
                     }
                 }
-                #endregion
                 pauseScreenEnabled();
             }
+            foreach (Walls w in walls)
+            {
+                if (jedi3.WallsCollision(w))
+                {
+                    jedi3.x = j3X;
+                    jedi3.y = j3Y;
 
+                    Random jediGen = new Random();
+                    int jediDirection = jediGen.Next(1, 5);
+
+                    if (jediDirection == 1)
+                    {
+                        jedi3.direction = "left";
+                    }
+                    else if (jediDirection == 2)
+                    {
+                        jedi3.direction = "up";
+                    }
+                    else if (jediDirection == 3)
+                    {
+                        jedi3.direction = "down";
+                    }
+                    else if (jediDirection == 4)
+                    {
+                        jedi3.direction = "right";
+                    }
+                }
+                pauseScreenEnabled();
+            }
+            foreach (Walls w in walls)
+            {
+                if (jedi4.WallsCollision(w))
+                {
+                    jedi4.x = j4X;
+                    jedi4.y = j4Y;
+
+                    Random jediGen = new Random();
+                    int jediDirection = jediGen.Next(1, 5);
+
+                    if (jediDirection == 1)
+                    {
+                        jedi4.direction = "left";
+                    }
+                    else if (jediDirection == 2)
+                    {
+                        jedi4.direction = "up";
+                    }
+                    else if (jediDirection == 3)
+                    {
+                        jedi4.direction = "down";
+                    }
+                    else if (jediDirection == 4)
+                    {
+                        jedi4.direction = "right";
+                    }
+                }
+                pauseScreenEnabled();
+            }
+            #endregion
+
+            #region collision
             Rectangle jedi1Rec = new Rectangle(jedi1.x, jedi1.y, jediSize, jediSize);
             Rectangle jedi2Rec = new Rectangle(jedi2.x, jedi2.y, jediSize, jediSize);
+            Rectangle jedi3Rec = new Rectangle(jedi3.x, jedi3.y, jediSize, jediSize);
+            Rectangle jedi4Rec = new Rectangle(jedi4.x, jedi4.y, jediSize, jediSize);
             Rectangle playerRec = new Rectangle(player.x, player.y, playerSize, playerSize);
 
             if (jedi1Rec.IntersectsWith(playerRec))
@@ -264,35 +336,71 @@ namespace Drogmar_s_Quest
                 scoreKeeper.Text = "Lives: " + lives;
             }
 
+            else if (jedi3Rec.IntersectsWith(playerRec))
+            {
+                lives -= 1;
+                scoreKeeper.Text = "Lives: " + lives;
+            }
+
+            else if (jedi4Rec.IntersectsWith(playerRec))
+            {
+                lives -= 1;
+                scoreKeeper.Text = "Lives: " + lives;
+            }
+
+            #endregion
+
+            //game lost
             if (lives == 0)
             {
                 gameTimer.Stop();
 
-                Form f = this.FindForm();
-                f.Controls.Remove(this);
-
-                GameOverScreen gos = new GameOverScreen();
-                f.Controls.Add(gos);
-
-                gos.Location = new Point((f.Width - gos.Width) / 2, (f.Height - gos.Height) / 2);
-
-                gos.Focus();
+                pauseLabel.Visible = true;
+                pauseLabel.Text = "You Lose!";
+                menuButton.Enabled = true;
+                menuButton.Visible = true;
+                menuButton.Text = "Quit Game";
+                playAgainButton.Enabled = true;
+                playAgainButton.Visible = true;
+                playAgainButton.Text = "Play again";
             }
 
+            #region going off screen
             if (jedi1.y >= 783)
             {
                 jedi1.direction = "right";
             }
-            else if (jedi2.y >= 783)
+            else if (jedi2.y >= 777)
             {
                 jedi2.direction = "up";
             }
-            else if (player.y >= 783)
+            else if (jedi3.y >= 777)
+            {
+                jedi3.direction = "up";
+            }
+            else if (jedi4.y >= 777)
+            {
+                jedi4.direction = "up";
+            }
+            else if (player.y >= 777)
             {
                 OnWin();
             }
+            #endregion
 
             Refresh();
+        }
+
+        private void playAgainButton_Click(object sender, EventArgs e)
+        {
+            // Goes to the game screen
+            LevelScreen ls = new LevelScreen();
+            Form form = this.FindForm();
+
+            form.Controls.Add(ls);
+            form.Controls.Remove(this);
+
+            ls.Location = new Point((form.Width - ls.Width) / 2, (form.Height - ls.Height) / 2);
         }
 
         private void LevelLoad()
@@ -335,6 +443,8 @@ namespace Drogmar_s_Quest
             menuButton.Visible = false;
             resumeButton.Enabled = false;
             resumeButton.Visible = false;
+            playAgainButton.Enabled = false;
+            playAgainButton.Visible = false;
 
             LevelLoad();
 
@@ -344,8 +454,10 @@ namespace Drogmar_s_Quest
             scoreKeeper.Text = "Lives: " + lives;
 
             player = new Players(this.Width / 2 - playerSize / 2, 352, playerSize);
-            jedi1 = new Jedi(this.Width / 2 - 40 / 2, 610, 40);
+            jedi1 = new Jedi(this.Width / 2 - jediSize / 2, 610, jediSize);
             jedi2 = new Jedi(this.Width / 2 - jediSize / 2, 510, jediSize);
+            jedi3 = new Jedi(this.Width / 2 - jediSize / 2, 670, jediSize);
+            jedi4 = new Jedi(this.Width / 2 - jediSize / 2, 410, jediSize);
 
         }
 
@@ -373,17 +485,7 @@ namespace Drogmar_s_Quest
 
         public void OnEnd()
         {
-            gameTimer.Stop();
-
-            Form f = this.FindForm();
-            f.Controls.Remove(this);
-
-            GameOverScreen gos = new GameOverScreen();
-            f.Controls.Add(gos);
-
-            gos.Location = new Point((f.Width - gos.Width) / 2, (f.Height - gos.Height) / 2);
-
-            gos.Focus();
+            Application.Exit();
         }
 
         public void OnWin()
@@ -406,6 +508,8 @@ namespace Drogmar_s_Quest
             #region draw jedi characters
             e.Graphics.DrawImage(robo1, jedi1.x, jedi1.y, 30, 30);
             e.Graphics.DrawImage(robo2, jedi2.x, jedi2.y, 30, 30);
+            e.Graphics.DrawImage(robo3, jedi3.x, jedi3.y, jediSize, jediSize);
+            e.Graphics.DrawImage(robo4, jedi4.x, jedi4.y, jediSize, jediSize);
             #endregion
 
             #region draw walls
